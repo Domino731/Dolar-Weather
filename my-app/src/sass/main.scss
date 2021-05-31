@@ -1,0 +1,9 @@
+
+@import "generic/_reset.scss";
+@import "generic/_class.scss";
+@import "mixins/_mixin.scss";
+@import "generic/_variables.scss";
+@import "elements/_navigation";
+body{
+  font-family: $fontFamily;
+}
