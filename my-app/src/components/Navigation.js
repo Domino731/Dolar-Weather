@@ -16,7 +16,7 @@ const Navigation = ({changeSearchBarValue1}) => {
                 </div>
 
                 <input type="text" className="navigation__searchBar" ref={node => (input = node)}/>
-                <button type="submit" onClick={handleSubmit}>asd</button>
+                <button type="submit" onClick={handleSubmit}><i>ad</i></button>
             </div>
         </nav>
     )

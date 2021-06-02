@@ -13,7 +13,7 @@ export const getCurrent = (set, city) => {
         .catch(err => console.log(err))
 }
 export const getOneCall = (set, lat, lon) => {
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=${key}`)
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&units=metric&appid=${key}`)
         .then(r => r.json())
         .then(r => set(r))
         .catch(err => console.log(err))
