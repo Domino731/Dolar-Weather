@@ -4,6 +4,8 @@
 @import "mixins/_mixin.scss";
 @import "generic/_variables.scss";
 @import "elements/_navigation";
+@import "elements/_mainForecast.scss";
+
 body{
   font-family: $fontFamily;
 }

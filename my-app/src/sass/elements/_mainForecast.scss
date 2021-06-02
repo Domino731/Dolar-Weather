@@ -1,0 +1,120 @@
+.forecast_container {
+  width: 100%;
+  height: 715px;
+  background: #2884f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainForecast {
+  width: 359px;
+  height: 676px;
+  background: $backgroundColor-opacity;
+  border-radius: 62px;
+  color: white;
+  overflow: hidden;
+
+  .showDaysButton {
+    width: 100%;
+    height: 70px;
+    background: white;
+    outline: none;
+    border: none;
+    &:hover{
+      background: #ac9f9f;
+    }
+  }
+}
+
+.mainForecastTitle {
+  margin-top: 30px;
+  width: 100%;
+  text-align: center;
+
+  h1 {
+    font-size: $fontSize-weatherForecast-city;
+  }
+
+  h2 {
+    font-size: $fontSize-weatherForecast-date;
+    margin-top: 10px;
+  }
+}
+
+.mainForecastWeather {
+  width: 100%;
+  margin-top: 27px;
+
+  &__actualTemp {
+    text-align: center;
+    font-size: $fontSize-weatherForecast-temperatureBig;
+  }
+
+  &__exact {
+    width: 90%;
+    border-top: 6px solid #ffffff;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &--icon {
+      margin-top: 20px;
+      font-size: $fontSize-weatherForecast-ExactSkyIcon;
+    }
+
+    &--description {
+      font-size: $fontSize-weatherForecast-weather;
+      text-align: center;
+
+      div {
+        font-size: 37px;
+        margin-bottom: 10px;
+      }
+
+    }
+
+    .description__conditions {
+      width: 100%;
+      height: 100px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 25px;
+      margin-top: 43px;
+
+      &--condition {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        i {
+          position: relative;
+          z-index: 0;
+
+          i {
+            position: absolute;
+            left: -7px;
+            top: -21px;
+            z-index: -2;
+            animation: arrow 0.7s infinite alternate-reverse;
+          }
+        }
+      }
+    }
+
+  }
+
+}
+
+@keyframes arrow {
+  0% {
+    left: -7px;
+    top: -21px;
+  }
+  100% {
+    top: -18px;
+  }
+}

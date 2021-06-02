@@ -1,4 +1,4 @@
-export const searchBar_value = (state = [], action) => {
+export const searchBar_value = (state = {location: "london"}, action) => {
     console.log(action)
     switch (action.type) {
 
