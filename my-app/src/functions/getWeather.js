@@ -3,10 +3,10 @@ const key = `e105d21fb59c10d6ab6a04386a749917`;
 export const getCurrent = (set, city) => {
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`)
         .then(response => {
-            if(response.ok){
+            if (response.ok) {
                 return response
             }
-            throw Error ("nie udało się")
+            set("error")
         })
         .then(response => response.json())
         .then(r => set(r))

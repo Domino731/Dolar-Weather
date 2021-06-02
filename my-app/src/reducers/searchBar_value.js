@@ -1,4 +1,6 @@
-export const searchBar_value = (state = {location: "london"}, action) => {
+import {getRandomCapital} from "../functions/randomCapital";
+
+export const searchBar_value = (state = {location: getRandomCapital()}, action) => {
     console.log(action)
     switch (action.type) {
 

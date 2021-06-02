@@ -1,5 +1,6 @@
 import {connect} from "react-redux";
 import {changeSearchBarValue} from "../actions/searchBar_value-actions";
+import {useState} from "react";
 
 const Navigation = ({changeSearchBarValue1}) => {
     let input;
@@ -11,12 +12,8 @@ const Navigation = ({changeSearchBarValue1}) => {
         <nav className="container">
             <div className="navigation">
 
-                <div className="navigation__menuIcon">
-                    <i className="fas fa-bars"/>
-                </div>
-
-                <input type="text" className="navigation__searchBar" ref={node => (input = node)}/>
-                <button type="submit" onClick={handleSubmit}><i>ad</i></button>
+                 <input onChange={handleSubmit} type="text" className="navigation__searchBar"
+                                          ref={node => (input = node)} placeholder="City"/>
             </div>
         </nav>
     )
