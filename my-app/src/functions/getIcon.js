@@ -1,3 +1,6 @@
+// this function return the icon which is dependent from weather
+//  parameter takes a string that is responsible for the description of the weather
+
 export const getIcon = (sky) => {
  if(sky === "Clouds"){
       return <i className="fas fa-cloud"/>

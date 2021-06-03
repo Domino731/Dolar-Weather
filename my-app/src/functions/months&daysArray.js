@@ -1,4 +1,5 @@
-export const monthsArray = [
+//  arrays with days and months which enable to display specific date in MainForecast component
+export const monthsDaysArray = [
     "January",
     "February",
     "March",
