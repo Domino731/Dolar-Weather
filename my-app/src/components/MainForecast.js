@@ -47,8 +47,12 @@ const MainForecast = ({forecast}) => {
     //if the city name is correct
     return (
         <main className="container">
-            {/*forecast container with changed background by setGradient()*/}
-            <div className="forecast_container" style={{background: setGradient(currentForecast.weather[0].main)}}>
+            {/*body with changed background by setGradient()*/}
+            <style>{`body {
+            background: ${ setGradient(currentForecast.weather[0].main)} 
+            `}</style>
+
+            <div className="forecast_container">
                 <div className="mainForecast">
 
                     {/*city name and current date*/}

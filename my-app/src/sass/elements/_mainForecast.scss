@@ -1,7 +1,6 @@
 .forecast_container {
   width: 100%;
   height: 715px;
-  background: linear-gradient(#cc2b5e, #753a88);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,8 +8,8 @@
 }
 
 .mainForecast {
-  width: 359px;
-  height: 676px;
+  width: 100%;
+  margin-top: 20px;
   background: $backgroundColor-opacity;
   border-radius: 62px;
   color: white;
