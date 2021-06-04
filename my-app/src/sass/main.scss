@@ -1,10 +1,15 @@
 @import "generic/_variables.scss";
 @import "generic/_reset.scss";
 @import "generic/_class.scss";
-@import "mixins/_mixin.scss";
 @import "elements/_navigation";
 @import "elements/_mainForecast.scss";
 @import "elements/_extendendForecast.scss";
+
+@import "media_querry/375px/_container";
+@import "media_querry/375px/_fontSize";
+@import "media_querry/375px/_mainForecast.scss";
+@import "media_querry/375px/_navigation.scss";
+@import "media_querry/375px/_extendedForecast.scss";
 
 @import "media_querry/600px/_fontSize";
 @import "media_querry/600px/_container.scss";
@@ -26,12 +31,3 @@
 @import "media_querry/1280px/_mainForecast.scss";
 
 @import "media_querry/1600px/_container.scss";
-body{
-  font-family: $fontFamily;
-  background-repeat: repeat-x;
-  background: linear-gradient(#aa076b, #61045f, #aa076b);
-}
-body, html {
-  padding: 0;
-  margin: 0;
-}

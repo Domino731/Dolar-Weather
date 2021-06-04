@@ -32,14 +32,19 @@ const MainForecast = ({forecast}) => {
     //if the city name is incorrect
     else if (currentForecast === "error") {
         return (
-            <main className="container">
-                <div className="forecast_container">
-                    <div className="error">
-                        <h1>Place not found</h1>
-                        <p><i className="far fa-frown-open"/></p>
+            <>
+                <style>{`body {
+            background: linear-gradient(#02aab0, #00cdac, #02aab0)} 
+            `}</style>
+                <main className="container">
+                    <div className="forecast_container">
+                        <div className="error">
+                            <h1>Place not found</h1>
+                            <p><i className="far fa-frown-open"/></p>
+                        </div>
                     </div>
-                </div>
-            </main>
+                </main>
+            </>
         )
     }
 
@@ -49,14 +54,17 @@ const MainForecast = ({forecast}) => {
         <main className="container">
             {/*body with changed background by setGradient()*/}
             <style>{`body {
-            background: ${ setGradient(currentForecast.weather[0].main)} 
+            background: ${setGradient(currentForecast.weather[0].main)} 
             `}</style>
 
             <div className="forecast_container">
                 <div className="mainForecast">
 
                     {/*city name and current date*/}
-                    <h1 className="mainForecast__title">   <i className="fas fa-heart " onClick={() => saveCity(currentForecast.name)}/>{currentForecast.name}</h1>
+                    <h1 className="mainForecast__title" >
+                        <i className="fas fa-heart "
+                           onClick={() => saveCity(currentForecast.name)}/>{currentForecast.name}
+                    </h1>
                     <h2 className="mainForecast__date">{daysArray[date.getDay()]}, {monthsDaysArray[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</h2>
                     {/*current weather */}
                     <div className="currentWeather">
@@ -106,7 +114,6 @@ const MainForecast = ({forecast}) => {
         </main>
     )
 }
-
 
 
 //getting name of city (random)

@@ -1,0 +1,19 @@
+@media (max-width: 375px){
+  .navigation{
+    height: 49px;
+  }
+  .navigation__searchBar {
+    width: 68%;
+    height: 28px;
+  }
+  .navigation__menuIcon {
+    width: 28px;
+    height: 28px;
+  }
+  .savedCities {
+    height: 148px;
+  }
+  .savedCities__list {
+    margin-top: 6px;
+  }
+}

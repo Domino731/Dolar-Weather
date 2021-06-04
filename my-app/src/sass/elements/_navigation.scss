@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   &__menuIcon {
+    margin-right: 5px;
     font-size: $fontSize-navigation-icon;
     color: $fontColor-primary;
     background-color: $backgroundColor-opacity;
@@ -20,6 +21,7 @@
     align-items: center;
     &:hover{
       color: $color-weatherForecast-condition;
+      cursor: pointer;
     }
   }
 
@@ -55,6 +57,7 @@
     margin-top: 5px;
     &:hover{
       color: $color-weatherForecast-condition;
+      cursor: pointer;
     }
   }
   &__title {
@@ -68,6 +71,7 @@
     margin-top: 23px;
     font-size: $fontSize-savedList;
     height: 137px;
+    width: 100%;
     border-top: 2px solid white;
     overflow-x: auto ;
     &::-webkit-scrollbar{
@@ -79,9 +83,10 @@
 
     li {
       padding: 9px 84px;
-
+  text-align: center;
       &:hover {
         color: #E71D36;
+        cursor: pointer;
       }
     }
   }
