@@ -56,7 +56,7 @@ const MainForecast = ({forecast}) => {
                 <div className="mainForecast">
 
                     {/*city name and current date*/}
-                    <h1 className="mainForecast__title">{currentForecast.name}</h1>
+                    <h1 className="mainForecast__title">   <i className="fas fa-heart " onClick={() => saveCity(currentForecast.name)}/>{currentForecast.name}</h1>
                     <h2 className="mainForecast__date">{daysArray[date.getDay()]}, {monthsDaysArray[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</h2>
                     {/*current weather */}
                     <div className="currentWeather">

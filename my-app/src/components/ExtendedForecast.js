@@ -52,7 +52,7 @@ const DailyWeather = ({daily, dayNumber}) => {
             {/*day of the week received by getDay function*/}
             <h1 className="extendedDaily__box--title">{getDay(daily.daily, dayNumber)}</h1>
             {/*container which contains information about specific day*/}
-            <div className="row">
+            <div className="extendedDaily__container">
 
                 {/*general information like temperature (form state) and weather icon(getIcon function)*/}
                 <div className="extendedDaily__general">

@@ -1,0 +1,50 @@
+@media (min-width: 1280px) {
+  .currentWeather {
+    height: 378px;
+    margin-top: 37px;
+    margin-bottom: 0;
+
+  }
+  .mainForecast__title {
+    i{
+      display: block;
+    }
+  }
+  .currentWeather__details--conditions {
+    height: 213px;
+  }
+    .mainForecast {
+      height: 827px;
+    }
+  .forecast_container {
+    margin-top: 27px;
+  }
+  .currentWeather {
+    height: 291px;
+  }
+  .currentWeather__temperature {
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    span:first-child {
+      margin-top: 20px;
+    }
+  }
+  .currentWeather__details {
+    width: 35%;
+  }
+  .currentWeather__temperature {
+    width: 65%;
+  }
+  .currentWeather__details--conditions {
+    height: 162px;
+  }
+  .currentWeather__temperature div {
+    margin-top: 13px;
+  }
+  .footer__saveBtn{
+    display: none;
+  }
+}

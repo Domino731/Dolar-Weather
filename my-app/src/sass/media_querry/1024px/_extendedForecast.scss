@@ -1,0 +1,14 @@
+@media (min-width: 1024px) {
+  .extendedForecast {
+    height: 277px;
+  }
+  .extendedDaily__general {
+    height: 223px;
+  }
+  .extendedDaily__conditions{
+    height: 223px;
+  }
+  .extendedForecast .extendedDaily__box {
+    margin-bottom: 37px;
+  }
+}

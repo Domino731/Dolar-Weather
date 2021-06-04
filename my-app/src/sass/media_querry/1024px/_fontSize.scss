@@ -1,0 +1,35 @@
+@media (min-width: 1024px){
+  // main forecast
+  .mainForecast__title{
+    font-size: 109px;
+  }
+  .mainForecast__date{
+    font-size: 37px;
+  }
+  .currentWeather__temperature {
+    font-size: 154px;
+  }
+  .currentWeather__temperature div {
+    font-size: 67px;
+  }
+  .currentWeather__details {
+    font-size: 67px;
+  }
+  .currentWeather__details--conditions {
+    font-size: 38px;
+  }
+
+  // extended forecast
+  .extendedForecast .extendedDaily__box--title {
+    font-size: 38px;
+  }
+  .extendedDaily__general--icon {
+    font-size: 113px;
+  }
+  .extendedDaily__general--temperature {
+    font-size: 40px;
+  }
+  .extendedDaily__conditions {
+    font-size: 38px;
+  }
+}
