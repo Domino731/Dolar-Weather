@@ -1,18 +1,52 @@
 // this function return the background color which is dependent from weather
 // sky - weather conditions
+import clear from "../images/clear_sky.jpg";
+import haze from "../images/haze.jpg";
+import snow from "../images/snow.jpg";
+import rain from "../images/rain.png";
+import thunderstorm from "../images/thunderstorm.png";
+import clouds from "../images/clouds.jpg";
+
+const backgroundsData = [
+    {
+        src: clouds,
+        author: <a href='https://www.freepik.com/photos/travel'>Travel photo created by photoangel - www.freepik.com</a>
+    },
+    {
+        src: clear,
+        author: <a href='https://www.freepik.com/photos/star'>Star photo created by lifeforstock - www.freepik.com</a>
+    },
+    {
+        src: haze,
+        author: <a href='https://www.freepik.com/photos/city'>City photo created by teksomolika - www.freepik.com</a>
+    },
+    {
+        src: snow,
+        author: <a href='https://www.freepik.com/photos/background'>Background photo created by wirestock - www.freepik.com</a>
+    },
+    {
+        src: rain,
+        author: <a href='https://www.freepik.com/photos/background'>Background photo created by wirestock - www.freepik.com</a>
+    },
+    {
+        src: thunderstorm,
+        author: <a href='https://www.freepik.com/vectors/abstract'>Abstract vector created by macrovector - www.freepik.com</a>
+    }
+];
+
 
 export const setGradient = (sky) => {
     if (sky === "Clouds") {
-        return `linear-gradient(#614385, #516395, #614385)`
+        return backgroundsData[0]
     } else if (sky === "Haze") {
-        return `linear-gradient(#42275a, #734b6d, #42275a)`
+        return  backgroundsData[2]
     } else if (sky === "Clear") {
-        return `linear-gradient(#36d1dc, #5b86e5, #36d1dc)`
+        return  backgroundsData[1]
     } else if (sky === "Snow") {
-        return `linear-gradient(#000428, #004e92, #000428)`
+        return  backgroundsData[3]
     } else if (sky === "Rain") {
-        return `linear-gradient(#ffd89b, #19547b, #ffd89b)`
+        return  backgroundsData[4]
     } else if (sky === "Thunderstorm") {
-        return `linear-gradient(#c33764, #1d2671, #c33764)`
+        return  backgroundsData[5]
     }
 }

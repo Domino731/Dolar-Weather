@@ -10,23 +10,31 @@ import { saveCity } from "../functions/saveCity";
 import humidity from "../images/humidity.png";
 import air from "../images/air.png";
 import pressure from "../images/pressure.png";
+import rain from "../images/rain.png";
 //this component rendering the main content on page(weather forecast)
 const MainForecast = ({ forecast }) => {
 
     // the state which contains the weather forecast, getting by getCurrent()
-    const [currentForecast, setCurrentForecast] = useState("");
+    const [currentForecast, setCurrentForecast] = useState(null);
 
     // state with date
-    const [date] = useState(new Date())
+    const [date, setDate] = useState(new Date())
+
+    const [backgroundData, setBackgroundData] = useState({src: '', author: ''});
 
     //setting and updating weather in state(currentForecast)
     useEffect(() => {
         getCurrent(setCurrentForecast, forecast.location)
     }, [forecast.location])
 
+    useEffect(()=> {
+       currentForecast &&  setBackgroundData(setGradient(currentForecast.weather[0].main));
+        console.log(backgroundData)
+    }, [currentForecast]);
+
 
     //blocking display in pending
-    if (currentForecast === "") {
+    if (currentForecast === null) {
         return null
     }
 
@@ -62,15 +70,10 @@ const MainForecast = ({ forecast }) => {
 
             {/*body with changed background by setGradient()*/}
             <style>{`body {
-            background: ${setGradient(currentForecast.weather[0].main)} 
+            background-image: url(${backgroundData.src})} 
             `}</style>
 
             <div className="forecast_container">
-
-
-
-
-
 
                 <div className="mainForecast">
 
