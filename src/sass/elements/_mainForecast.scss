@@ -13,6 +13,7 @@
   border-radius: 17px;
   color: white;
   text-shadow: $textShadow;
+  box-shadow: 0 0 2px 0 #0a0a0a;
   overflow: hidden;
   font-size: 10px;
   margin-top: 23px;
@@ -105,6 +106,7 @@
     span {
       margin-left: 3px;
     }
+
   }
 
   &__singleDetail {
@@ -150,25 +152,16 @@
     margin-top: 20px;
   }
 }
-.footer {
+.save {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
-  &__saveBtn {
-    width: 65px;
-    height: 45px;
-    border-radius: 25px;
-    margin-top: 46px;
-    outline: none;
+  font-size: 10px;
+  &__btn {
     color: #f9320c;
-    border: none;
-    background: transparent;
-    i {
-      font-size: $fontSize-saveIcon;
-    }
+    font-size: 3em;
     &:focus {
       border: 2px solid $color-weatherForecast-condition;
-    }
-    &:hover {
     }
   }
 }

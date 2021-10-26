@@ -53,14 +53,34 @@ const MainForecast = ({ forecast }) => {
 
     //if the city name is correct
     return (
+
+        
         <main className="container">
+
+
+             
+
             {/*body with changed background by setGradient()*/}
             <style>{`body {
             background: ${setGradient(currentForecast.weather[0].main)} 
             `}</style>
 
             <div className="forecast_container">
+
+
+
+
+
+
                 <div className="mainForecast">
+
+                   <div className="save">
+                        {/*saving the city in local storage by saveCity()*/}
+                        <div className="save__btn" onClick={() => saveCity(currentForecast.name)}>
+                            <i className="fas fa-heart" />
+                        </div>
+                    </div>
+
 
                     {/*city name and current date*/}
                     <h1 className="mainForecast__title" >
@@ -120,13 +140,6 @@ const MainForecast = ({ forecast }) => {
 
                     {/*rendering component which is returning daily weather, transmits coords from state (currentForecast)*/}
                     <ExtendedForecast lat={currentForecast.coord.lat} lon={currentForecast.coord.lon} />
-
-                    <div className="footer">
-                        {/*saving the city in local storage by saveCity()*/}
-                        <button className="footer__saveBtn" onClick={() => saveCity(currentForecast.name)}>
-                            <i className="fas fa-heart" />
-                        </button>
-                    </div>
                 </div>
             </div>
         </main>

@@ -1,10 +1,10 @@
-// simple navigation component with saved list, which sets the reducer by action changeSearchBarValue
+
 
 import {connect} from "react-redux";
 import {changeSearchBarValue} from "../actions/searchBar_value-actions";
 import {useEffect, useState} from "react"; //changing reducer value function
-
-
+import diskette from "../images/diskette.png"
+// simple navigation component with saved list, which sets the reducer by action changeSearchBarValue
 const Navigation = ({changeSearchBarValue1}) => {
     const [flag, setFlag] = useState(true)
     const [savedCities, setSavedCities] = useState(JSON.parse(localStorage.getItem("savedCities")))
@@ -41,18 +41,21 @@ const Navigation = ({changeSearchBarValue1}) => {
         <nav className="container">
             {/*navigation  */}
             {flag && <div className="navigation">
-                <i className="far fa-save navigation__menuIcon" onClick={handleChangeFlag}/>
+                <div className="navigation__toggleIcon" onClick={handleChangeFlag}>
+                     <img src={diskette} alt='diskette ' title='See your saved places'/>
+                </div>
                 <input onChange={handleSubmit} type="text" className="navigation__searchBar"
-                       ref={node => (input = node)} placeholder="City"/>
+                       ref={node => (input = node)} placeholder="Enter a place name"/>
             </div>}
            {/*saved cities in list*/}
+
             {flag !== true && <div className="savedCities">
                 <i className="far fa-times-circle closeIcon" onClick={handleChangeFlag}/>
                 <h1 className="savedCities__title">SAVED</h1>
                 <ul className="savedCities__list">{
                     // rendering list elements by savedCities state(Local Storage)
                     savedCities.map((el, key) => (
-                        <li key={key + `savedCity`} onClick={() => handleChangeCity(el)}>{el}</li>
+                        <li className='savedCities__listItem' key={key + `savedCity`} onClick={() => handleChangeCity(el)}>{el}</li>
                     ))
                 }</ul>
             </div>}
