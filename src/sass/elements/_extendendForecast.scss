@@ -1,12 +1,13 @@
-.extendedDaily__container{
+.extendedDaily__content{
   display: flex;
+
 }
 .extendedForecast{
   border-bottom: 2px solid white;
   border-top: 2px solid white;;
   margin-top: 40px;
-  height: 157px;
   overflow-x: auto;
+  font-size: 10px;
   &::-webkit-scrollbar{
     width: 12px;
   }
@@ -14,19 +15,21 @@
     border-radius: 6px;
     background: rgba(0, 0, 0, 0.2);
   }
-  .extendedDaily__box{
+  .extendedDaily__container{
     box-sizing: border-box;
     width: 100%;
     height: 100%;
     &:first-child{
       display: none;
     }
-    &--title{
+  }
+  &__title{
+    font-size: 1.6em;
       text-align: center;
       margin-bottom: 9px;
-    }
   }
 }
+
 .extendedDaily__general{
   width: 50%;
   height: 118px;
@@ -34,25 +37,36 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  &--icon{
-    font-size: $fontSize-weatherForecastExtended-skyIcon;
-    margin-top: 10px;
+  font-size: 10px;
+  img{
+   width: 75px;
+   height: auto;
+   object-fit: cover;
   }
-  &--temperature{
- font-size: $fontSize-weatherForecastExtended-ActualTemperature;
-    margin-top: 11px;
+  div{
+    margin-top: 0.8em;
+     font-size: 1.5em;
+     letter-spacing: 0.063rem;
   }
 }
 .extendedDaily__conditions{
   box-sizing: border-box;
   width: 50%;
-  height: 118px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding-left: 45px;
-  strong{
-    margin-left: 10px;
-    color: $color-weatherForecast-condition;
+  padding-left: 22px;
+  font-size: 10px;
+}
+.extendedDaily__singleCondition{
+  font-size: 1.3em;
+  display: flex;
+  align-items: center;
+   //color: $color-weatherForecast-condition;
+  img{
+    width: 2.1em;
+    height: auto;
+    object-fit: cover;
+    margin-right: 0.7em;
   }
 }

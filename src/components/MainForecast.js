@@ -100,17 +100,17 @@ const MainForecast = ({ forecast }) => {
 
                                 <div className ='currentWeather__singleDetail'>
                                     <img src={humidity} alt='Water' title='Humidity' /> <span>Humidity</span>
-                                    <strong> {currentForecast.main.humidity}%</strong>
+                                    <strong className='humidityColor'> {currentForecast.main.humidity}%</strong>
                                 </div>
 
                                 <div className='currentWeather__singleDetail'>
                                     <img src={air} alt='Wind' title='Wind' /> <span>Wind</span>
-                                    <strong> {Math.floor(currentForecast.wind.speed)}kph</strong>
+                                    <strong className='windColor'> {Math.floor(currentForecast.wind.speed)}kph</strong>
                                 </div>
 
                                 <div className='currentWeather__singleDetail'>
                                     <img src={pressure} alt='Pressure' title='Pressure' /><span>Pressure</span>
-                                    <strong> {currentForecast.main.pressure} hpa</strong>
+                                    <strong className='pressureColor'> {currentForecast.main.pressure} hpa</strong>
                                 </div>
 
                             </div>

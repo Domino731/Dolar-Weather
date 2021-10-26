@@ -1,9 +1,9 @@
 .forecast_container {
   width: 100%;
-  height: 715px;
+  // height: 715px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   margin-top: -3px;
 }
 
@@ -15,6 +15,7 @@
   text-shadow: $textShadow;
   overflow: hidden;
   font-size: 10px;
+  margin-top: 23px;
   &__title {
     width: 100%;
     text-align: center;
@@ -71,21 +72,21 @@
     text-shadow: $textShadow;
     font-size: 10px;
     padding-left: 10px;
-    span, div {
-        font-size: 2em;
+    span,
+    div {
+      font-size: 2em;
     }
-    img{
+    img {
       width: 77px;
       height: auto;
       object-fit: cover;
     }
-    div{
+    div {
       margin-top: 0.2em;
-      &::first-letter{
+      &::first-letter {
         text-transform: uppercase;
       }
     }
-   
   }
 
   &__details {
@@ -93,7 +94,7 @@
     padding-left: 10px;
     font-size: $fontSize-weatherForecast-weatherDetails;
   }
-  
+
   &__detailsConditions {
     display: flex;
     font-size: $fontSize-weatherForecast-weatherConditions;
@@ -103,10 +104,6 @@
 
     span {
       margin-left: 3px;
-    }
-
-    strong {
-      color: $color-weatherForecast-condition;
     }
   }
 

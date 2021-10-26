@@ -9,6 +9,16 @@ body, html {
 *{
   box-sizing: border-box;
 }
+.humidityColor{
+ color: #fb8086;
+}
+.windColor{
+color: #3593f8;
+
+}
+.pressureColor{
+color: #ffc14f;
+}
 .container{
   width: 375px;
   margin: 0 auto;
