@@ -56,8 +56,8 @@ const DailyWeather = ({daily, dayNumber}) => {
 
                 {/*general information like temperature (form state) and weather icon(getIcon function)*/}
                 <div className="extendedDaily__general">
-                    <p className="extendedDaily__general--icon">{getIcon(sky)}</p>
-                    <h3 className="extendedDaily__general--temperature">{Math.floor(temperature_max)}&#176;/{Math.floor(temperature_min)}&#176;</h3>
+                    <div className="extendedDaily__general--icon">{getIcon(sky)}</div>
+                    <div className="extendedDaily__general--temperature">{Math.floor(temperature_max)}&#176;/{Math.floor(temperature_min)}&#176;</div>
                 </div>
 
                 {/*information about weather conditions (form state)*/}

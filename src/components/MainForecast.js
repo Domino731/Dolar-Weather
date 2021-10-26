@@ -58,6 +58,7 @@ const MainForecast = ({forecast}) => {
             `}</style>
 
             <div className="forecast_container">
+            <i className="fas fa-smog"/>
                 <div className="mainForecast">
 
                     {/*city name and current date*/}
