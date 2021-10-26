@@ -9,20 +9,20 @@
 
 .mainForecast {
   width: 100%;
-  margin-top: 20px;
   background: $backgroundColor-opacity;
   border-radius: 17px;
   color: white;
   text-shadow: $textShadow;
   overflow: hidden;
-
+  font-size: 10px;
   &__title {
-    font-size: $fontSize-weatherForecast-city;
     width: 100%;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 6px;
+    letter-spacing: 0.063rem;
+    font-size: 3.7em;
     text-shadow: $textShadow;
-    i{
+    i {
       display: none;
     }
   }
@@ -31,67 +31,105 @@
     width: 100%;
     text-align: center;
     text-shadow: $textShadow;
-    margin-top: 5px;
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    margin-bottom: 34px;
+    letter-spacing: 0.063rem;
   }
 }
 
 .currentWeather {
   width: 100%;
   display: flex;
-  margin-top: 60px;
-  padding-left: 4px;
- 
+
+  &__generalWrapper {
+    font-size: 10px;
+  }
+  &__temperatureFeel {
+    font-size: 2.1em;
+    letter-spacing: 0.063rem;
+  }
+  &__detailsMinMax {
+    width: 90%;
+    display: flex;
+    margin-top: 0.3em;
+    margin-bottom: 0.5em;
+    font-size: 2.4em;
+    i:first-child {
+      color: #f9320c;
+    }
+
+    i[class*="fa-long-arrow-alt-down"] {
+      color: #0080ff;
+      margin-left: 12px;
+    }
+  }
+
   &__temperature {
     width: 50%;
     border-right: 2px solid white;
     text-shadow: $textShadow;
-    font-size: $fontSize-weatherForecast-temperatureBig;
-
-    span{
-      
+    font-size: 10px;
+    padding-left: 10px;
+    span, div {
+        font-size: 2em;
     }
-    div {
-      font-size: $fontSize-weatherForecast-descriptionMain;
-      margin-top: 30px;
+    img{
+      width: 77px;
+      height: auto;
+      object-fit: cover;
     }
+    div{
+      margin-top: 0.2em;
+      &::first-letter{
+        text-transform: uppercase;
+      }
+    }
+   
   }
 
   &__details {
     width: 50%;
     padding-left: 10px;
     font-size: $fontSize-weatherForecast-weatherDetails;
+  }
+  
+  &__detailsConditions {
+    display: flex;
+    font-size: $fontSize-weatherForecast-weatherConditions;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
 
-    &--minMax {
-      width: 90%;
-      display: flex;
-      margin-top: 15px;
-
-      i:first-child {
-        color: #f9320c;
-      }
-
-      i[class*= fa-long-arrow-alt-down] {
-        color: #0080ff;
-        margin-left: 12px;
-      }
+    span {
+      margin-left: 3px;
     }
 
-    &--conditions {
-      margin-top: 40px;
-      display: flex;
-      height: 135px;
-      font-size: $fontSize-weatherForecast-weatherConditions;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: space-around;
+    strong {
+      color: $color-weatherForecast-condition;
+    }
+  }
 
-      span {
-        margin-left: 3px;
-      }
-
-      strong {
-        color: $color-weatherForecast-condition;
-      }
+  &__singleDetail {
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.063rem;
+    margin-top: 7px;
+    img {
+      width: 2.2em;
+      height: auto;
+      object-fit: cover;
+    }
+    span {
+      font-size: 1em;
+      margin-left: 0.5em;
+    }
+    strong {
+      font-size: 1em;
+      letter-spacing: 0.063rem;
+      margin-left: 0.3em;
+      font-weight: bold;
     }
   }
 }
@@ -109,16 +147,16 @@
     text-align: center;
     margin-top: 40px;
   }
-  p{
+  p {
     text-align: center;
     font-size: $fontSize-errorIcon;
     margin-top: 20px;
   }
 }
-.footer{
+.footer {
   display: flex;
   justify-content: center;
-  &__saveBtn{
+  &__saveBtn {
     width: 65px;
     height: 45px;
     border-radius: 25px;
@@ -127,15 +165,13 @@
     color: #f9320c;
     border: none;
     background: transparent;
-    i{
+    i {
       font-size: $fontSize-saveIcon;
     }
-    &:focus{
+    &:focus {
       border: 2px solid $color-weatherForecast-condition;
     }
-    &:hover{
-
+    &:hover {
     }
   }
-
 }

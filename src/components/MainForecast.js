@@ -1,15 +1,17 @@
-import {connect} from "react-redux";
-import {useEffect, useState} from "react";
-import {getCurrent} from "../functions/getWeather"; // getting current weather
-import {monthsDaysArray} from "../functions/months&daysArray"; // getting month
-import {daysArray} from "../functions/months&daysArray"; // getting day
-import {getIcon} from "../functions/getIcon"; // getting icon
-import {setGradient} from "../functions/setGradient"; // setting background by weather forecast
-import {ExtendedForecast} from "./ExtendedForecast"; // Component responsible for extended forecast
-import {saveCity} from "../functions/saveCity"; // saving city into local storage
-
+import { connect } from "react-redux";
+import { useEffect, useState } from "react";
+import { getCurrent } from "../functions/getWeather";
+import { monthsDaysArray } from "../functions/months&daysArray";
+import { daysArray } from "../functions/months&daysArray";
+import { getIcon } from "../functions/getIcon";
+import { setGradient } from "../functions/setGradient";
+import { ExtendedForecast } from "./ExtendedForecast";
+import { saveCity } from "../functions/saveCity";
+import humidity from "../images/humidity.png";
+import air from "../images/air.png";
+import pressure from "../images/pressure.png";
 //this component rendering the main content on page(weather forecast)
-const MainForecast = ({forecast}) => {
+const MainForecast = ({ forecast }) => {
 
     // the state which contains the weather forecast, getting by getCurrent()
     const [currentForecast, setCurrentForecast] = useState("");
@@ -40,7 +42,7 @@ const MainForecast = ({forecast}) => {
                     <div className="forecast_container">
                         <div className="error">
                             <h1>Place not found</h1>
-                            <p><i className="far fa-frown-open"/></p>
+                            <p><i className="far fa-frown-open" /></p>
                         </div>
                     </div>
                 </main>
@@ -58,13 +60,12 @@ const MainForecast = ({forecast}) => {
             `}</style>
 
             <div className="forecast_container">
-            <i className="fas fa-smog"/>
                 <div className="mainForecast">
 
                     {/*city name and current date*/}
                     <h1 className="mainForecast__title" >
                         <i className="fas fa-heart "
-                           onClick={() => saveCity(currentForecast.name)}/>{currentForecast.name}
+                            onClick={() => saveCity(currentForecast.name)} />{currentForecast.name}
                     </h1>
                     <h2 className="mainForecast__date">{daysArray[date.getDay()]}, {monthsDaysArray[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</h2>
                     {/*current weather */}
@@ -72,42 +73,58 @@ const MainForecast = ({forecast}) => {
 
                         {/*main temperature and icon*/}
                         <div className="currentWeather__temperature">
-                            <span>{getIcon(currentForecast.weather[0].main)}</span>
-                            <span>{Math.round(currentForecast.main.temp)}<span>&#176;</span>
-                            </span>
+                            <div>{getIcon(currentForecast.weather[0].main)}</div>
+                            <div>{Math.round(currentForecast.main.temp)}&#176;
+                            </div>
                             <div>{currentForecast.weather[0].description}</div>
                         </div>
 
                         {/*min & max temperature and conditions*/}
                         <div className="currentWeather__details">
-                            <h3 className="currentWeather__details--title">Feels
-                                like {Math.round(currentForecast.main.feels_like)}&#176; </h3>
-                            {/*min & max temperature*/}
-                            <p className="currentWeather__details--minMax">
-                                <i className="fas fa-long-arrow-alt-up"/>
-                                <span>{Math.round(currentForecast.main.temp_max)}&#176;</span>
-                                <i className="fas fa-long-arrow-alt-down"/>
-                                <span>{Math.round(currentForecast.main.temp_min)}&#176;</span>
-                            </p>
-                            {/*weather conditions*/}
-                            <div className="currentWeather__details--conditions">
-                                <p><i className="fas fa-tint"/> <span>Humidity</span>
-                                    <strong> {currentForecast.main.humidity} %</strong></p>
-                                <p><i className="fas fa-wind"/> <span>Wind</span>
-                                    <strong> {Math.floor(currentForecast.wind.speed)} kph</strong></p>
-                                <p><i className="far fa-heart"/><span>Pressure</span>
-                                    <strong> {currentForecast.main.pressure} hpa</strong></p>
+
+                            <div className="currentWeather__generalWrapper">
+                                <h3 className="currentWeather__temperatureFeel">Feels
+                                    like {Math.round(currentForecast.main.feels_like)}&#176; </h3>
+
+                                {/*min & max temperature*/}
+                                <div className="currentWeather__detailsMinMax">
+                                    <i className="fas fa-long-arrow-alt-up" />
+                                    <span>{Math.round(currentForecast.main.temp_max)}&#176;</span>
+                                    <i className="fas fa-long-arrow-alt-down" />
+                                    <span>{Math.round(currentForecast.main.temp_min)}&#176;</span>
+                                </div>
                             </div>
+
+                            {/*weather conditions*/}
+                            <div className="currentWeather__detailsConditions">
+
+                                <div className ='currentWeather__singleDetail'>
+                                    <img src={humidity} alt='Water' title='Humidity' /> <span>Humidity</span>
+                                    <strong> {currentForecast.main.humidity}%</strong>
+                                </div>
+
+                                <div className='currentWeather__singleDetail'>
+                                    <img src={air} alt='Wind' title='Wind' /> <span>Wind</span>
+                                    <strong> {Math.floor(currentForecast.wind.speed)}kph</strong>
+                                </div>
+
+                                <div className='currentWeather__singleDetail'>
+                                    <img src={pressure} alt='Pressure' title='Pressure' /><span>Pressure</span>
+                                    <strong> {currentForecast.main.pressure} hpa</strong>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
 
                     {/*rendering component which is returning daily weather, transmits coords from state (currentForecast)*/}
-                    <ExtendedForecast lat={currentForecast.coord.lat} lon={currentForecast.coord.lon}/>
+                    <ExtendedForecast lat={currentForecast.coord.lat} lon={currentForecast.coord.lon} />
 
                     <div className="footer">
                         {/*saving the city in local storage by saveCity()*/}
                         <button className="footer__saveBtn" onClick={() => saveCity(currentForecast.name)}>
-                            <i className="fas fa-heart"/>
+                            <i className="fas fa-heart" />
                         </button>
                     </div>
                 </div>
