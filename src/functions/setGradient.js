@@ -3,7 +3,7 @@
 import clear from "../images/clear_sky.jpg";
 import haze from "../images/haze.jpg";
 import snow from "../images/snow.jpg";
-import rain from "../images/rain.png";
+import rain from "../images/rain.jpg";
 import thunderstorm from "../images/thunderstorm.png";
 import clouds from "../images/clouds.jpg";
 
@@ -36,6 +36,7 @@ const backgroundsData = [
 
 
 export const setGradient = (sky) => {
+    console.log(sky)
     if (sky === "Clouds") {
         return backgroundsData[0]
     } else if (sky === "Haze") {

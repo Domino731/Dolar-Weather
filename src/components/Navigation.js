@@ -5,35 +5,31 @@ import {changeSearchBarValue} from "../actions/searchBar_value-actions";
 import {useEffect, useState} from "react"; //changing reducer value function
 import diskette from "../images/diskette.png"
 // simple navigation component with saved list, which sets the reducer by action changeSearchBarValue
-const Navigation = ({changeSearchBarValue1}) => {
+const Navigation = ({changeSearchBarValue,  savedPlaces}) => {
+
     const [flag, setFlag] = useState(true)
-    const [savedCities, setSavedCities] = useState(JSON.parse(localStorage.getItem("savedCities")))
+ useEffect(()=> {
+  localStorage.setItem('savedPlaces', JSON.stringify(savedPlaces));
+ }, [savedPlaces]);
 
-    //putting saved elements from local storage into savedCities state
-    useEffect(() => {
-        setSavedCities(JSON.parse(localStorage.getItem("savedCities")))
-    }, [])
 
-    // function responsible for getting value from input and setting it into changeSearchBarValue1
-    let input;
-    const handleSubmit = () => {
-        const value = input.value.trim();
-        changeSearchBarValue1(value)
+    const handleSubmit = (e) => {
+        changeSearchBarValue(e.target.value)
     }
 
     // changing the navigation display by flag state
     const handleChangeFlag = () => {
         if (flag === true) {
-            setFlag(false)
+            setFlag(false);
         } else {
-            setFlag(true)
+            setFlag(true);
         }
     }
 
     // changing the city by selecting saved place
     const handleChangeCity = (value) => {
-        changeSearchBarValue1(value)
-        setFlag(true)
+        changeSearchBarValue(value);
+        setFlag(true);
     }
 
 
@@ -45,7 +41,7 @@ const Navigation = ({changeSearchBarValue1}) => {
                      <img src={diskette} alt='diskette ' title='See your saved places'/>
                 </div>
                 <input onChange={handleSubmit} type="text" className="navigation__searchBar"
-                       ref={node => (input = node)} placeholder="Enter a place name"/>
+                       placeholder="Enter a place name"/>
             </div>}
            {/*saved cities in list*/}
 
@@ -54,7 +50,7 @@ const Navigation = ({changeSearchBarValue1}) => {
                 <h1 className="savedCities__title">SAVED</h1>
                 <ul className="savedCities__list">{
                     // rendering list elements by savedCities state(Local Storage)
-                    savedCities.map((el, key) => (
+                    savedPlaces.map((el, key) => (
                         <li className='savedCities__listItem' key={key + `savedCity`} onClick={() => handleChangeCity(el)}>{el}</li>
                     ))
                 }</ul>
@@ -66,6 +62,12 @@ const Navigation = ({changeSearchBarValue1}) => {
 
 //changing reducer value function
 const mapDispatchToProps = dispatch => ({
-    changeSearchBarValue1: (text) => dispatch(changeSearchBarValue(text))
-})
-export default connect(null, mapDispatchToProps)(Navigation);
+    changeSearchBarValue: (text) => dispatch(changeSearchBarValue(text))
+});
+
+// array with data about saved places names
+const mapStateToProps = state => ({
+    savedPlaces: state.savedPlaces,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
