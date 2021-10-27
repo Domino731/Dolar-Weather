@@ -80,8 +80,10 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
 
             <div className="forecast_container">
 
-                <div className="mainForecast">
+                {/* set background in container with forecast in order to create glass effect */}
+                <div className="mainForecast"  >
 
+                    <div className='forecastGlass'  style={ {backgroundImage: `url(${backgroundData.src})`}}/>
                     <div className="save">
                         {/*saving the city in local storage by saveCity()*/}
                         <div 
@@ -89,7 +91,6 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
                         onClick={() => saveNewPlace(currentForecast.name)}
                         title={`save__btn ${isSaved ? 'Save this location' : 'Remove this location from saved'}`}
                         >
-                    
                             <i className="fas fa-heart" />
                         </div>
                     </div>
