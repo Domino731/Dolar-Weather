@@ -13,6 +13,8 @@ import pressure from "../images/pressure.png";
 import rain from "../images/rain.png";
 import { changeSavedPlaces } from "../actions/savedPlaces-action";
 import { checkIsSaved } from "../functions/checkIsSaved";
+import mountains from "../images/mountains.jpg";
+import world from "../images/world.png"
 //this component rendering the main content on page(weather forecast)
 const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
 
@@ -49,15 +51,20 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
         return (
             <>
                 <style>{`body {
-            background: linear-gradient(#02aab0, #00cdac, #02aab0)} 
+             background-image: url(${mountains})} 
             `}</style>
                 <main className="container">
                     <div className="forecast_container">
                         <div className="error">
-                            <h1>Place not found</h1>
-                            <p><i className="far fa-frown-open" /></p>
+                            <h2>Place not found</h2>
+                            <img src={world}/>
                         </div>
                     </div>
+
+                    <div className="freepik__atribbute">
+                    <a href="https://www.freepik.com/photos/tree">Tree photo created by wirestock - www.freepik.com</a>
+                    </div>
+
                 </main>
             </>
         )
@@ -69,9 +76,6 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
 
 
         <main className="container">
-
-
-
 
             {/*body with changed background by setGradient()*/}
             <style>{`body {
@@ -156,6 +160,9 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
                     <ExtendedForecast lat={currentForecast.coord.lat} lon={currentForecast.coord.lon} />
                 </div>
             </div>
+
+            <div className="freepik__atribbute">{backgroundData.author}</div>
+
         </main>
     )
 }

@@ -4,17 +4,17 @@ import clear from "../images/clear_sky.jpg";
 import haze from "../images/haze.jpg";
 import snow from "../images/snow.jpg";
 import rain from "../images/rain.jpg";
-import thunderstorm from "../images/thunderstorm.png";
+import thunderstorm from "../images/thunderstorm.jpg";
 import clouds from "../images/clouds.jpg";
-
+import mist from "../images/mist.jpg"
 const backgroundsData = [
     {
         src: clouds,
-        author: <a href='https://www.freepik.com/photos/travel'>Travel photo created by photoangel - www.freepik.com</a>
+        author:  <a href='https://www.freepik.com/photos/abstract'>Abstract photo created by tawatchai07 - www.freepik.com</a>
     },
     {
         src: clear,
-        author: <a href='https://www.freepik.com/photos/star'>Star photo created by lifeforstock - www.freepik.com</a>
+        author: <a href='https://www.freepik.com/photos/background'>Background photo created by tirachard - www.freepik.com</a>
     },
     {
         src: haze,
@@ -26,17 +26,19 @@ const backgroundsData = [
     },
     {
         src: rain,
-        author: <a href='https://www.freepik.com/photos/background'>Background photo created by wirestock - www.freepik.com</a>
+        author: <a href='https://www.freepik.com/photos/background'>Background photo created by topntp26 - www.freepik.com</a>
     },
     {
         src: thunderstorm,
         author: <a href='https://www.freepik.com/vectors/abstract'>Abstract vector created by macrovector - www.freepik.com</a>
+    },
+    {
+     src: mist,
+     author: <a href='https://www.freepik.com/photos/tree'>Tree photo created by wirestock - www.freepik.com</a>
     }
 ];
 
-
 export const setGradient = (sky) => {
-    console.log(sky)
     if (sky === "Clouds") {
         return backgroundsData[0]
     } else if (sky === "Haze") {
@@ -49,5 +51,11 @@ export const setGradient = (sky) => {
         return  backgroundsData[4]
     } else if (sky === "Thunderstorm") {
         return  backgroundsData[5]
+    }
+    else if (sky === 'Mist'){
+        return backgroundsData[6]
+    }
+    else {
+        return backgroundsData[0]
     }
 }

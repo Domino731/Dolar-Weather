@@ -11,19 +11,19 @@ import thunderstorm from '../images/thunderstorm.png';
  */
 export const getIcon = (weather) => {
  if(weather === "Clouds"){
-      return <img src={cloud} alt='cloud' title='Cloud'/>
+      return <img src={cloud} alt='cloud' title='Cloudy'/>
  }
  else if (weather === "Haze"){
      return <img src={smog} alt='haze' title='Haze'/>
  }
  else if (weather === "Clear"){
-     return <img src={sun} alt='sun' title='Sun'/>
+     return <img src={sun} alt='sun' title='Sunny'/>
  }
  else if (weather === "Snow"){
-     return <img src={snow} alt='snow' title='Snow'/>
+     return <img src={snow} alt='snow' title='Snowing'/>
  }
  else if (weather === "Rain"){
-     return <img src={rain} alt='rain' title='Rain'/>
+     return <img src={rain} alt='rain' title='Raining'/>
  }
  else if (weather === "Thunderstorm") {
      return <img src={thunderstorm} alt='thunderstorm' title='Thunderstorm'/>
