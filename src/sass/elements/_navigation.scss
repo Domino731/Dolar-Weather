@@ -16,8 +16,9 @@
   @include tablet {
     height: 64px;
   }
-  @include tablet {
+  @include laptopS {
     border-radius: 0 0 28px 28px;
+    height: 44px;
   }
   &__searchBar {
     background-color: $backgroundColor-opacity;
@@ -45,6 +46,9 @@
       object-fit: cover;
       @include tablet {
         height: 44px;
+      }
+      @include laptopS {
+        height: 30px;
       }
     }
   }
@@ -97,7 +101,7 @@
     @include mobileM {
       margin-top: 12px;
     }
-    @include mobileXL { 
+    @include mobileXL {
       border-top: 3px solid rgb(255, 255, 255);
     }
     @include tablet {

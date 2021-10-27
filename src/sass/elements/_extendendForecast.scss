@@ -15,6 +15,9 @@
   @include tablet {
     height: 246px;
   }
+  @include laptopS {
+    height: 213px;
+  }
 }
 .extendedForecast {
   border-bottom: 2px solid white;
@@ -35,6 +38,9 @@
     font-size: 22px;
     border-bottom: 5px solid white;
     border-top: 5px solid white;
+  }
+  @include laptopS {
+    font-size: 17px;
   }
   .extendedDaily__container {
     box-sizing: border-box;
@@ -71,6 +77,9 @@
   @include tablet {
     font-size: 19px;
   }
+  @include laptopS {
+    font-size: 14px;
+  }
   img {
     width: 75px;
     height: auto;
@@ -86,6 +95,9 @@
     }
     @include tablet {
       width: 167px;
+    }
+    @include laptopS {
+      width: 139px;
     }
   }
   div {
@@ -116,6 +128,9 @@
   @include tablet {
     font-size: 23px;
     border-left: 5px solid white;
+  }
+  @include laptopS {   
+    font-size: 18px;
   }
 }
 .extendedDaily__singleCondition {

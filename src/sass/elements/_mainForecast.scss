@@ -25,7 +25,9 @@
   }
   @include laptopS {
     border-radius: 28px;
+    font-size: 15px;
   }
+
   &__title {
     width: 100%;
     text-align: center;
@@ -49,6 +51,9 @@
     @include mobileXL {
       margin-bottom: 50px;
     }
+    @include laptopM {
+      margin-bottom: 61px;
+    }
   }
 }
 
@@ -70,6 +75,10 @@
     @include tablet {
       font-size: 27px;
     }
+    @include laptopS {
+      font-size: 15px;
+    }
+
   }
   &__temperatureFeel {
     font-size: 2.1em;
@@ -114,6 +123,10 @@
       font-size: 24px;
       padding-left: 19px;
     }
+    @include laptopS {
+      font-size: 19px;
+      padding-left: 41px;
+    }
     span,
     div {
       font-size: 2em;
@@ -134,6 +147,9 @@
       @include tablet {
         width: 205px;
       }
+      @include laptopS {
+        width: 159px;
+      }
     }
     div {
       margin-top: 0.2em;
@@ -147,6 +163,9 @@
     width: 50%;
     padding-left: 10px;
     font-size: $fontSize-weatherForecast-weatherDetails;
+    @include laptopS {
+      padding-left: 41px;
+    }
   }
 
   &__detailsConditions {
@@ -179,6 +198,14 @@
     @include tablet {
       margin-top: 16px;
       font-size: 29px;
+    }
+    @include mobileM {
+      font-size: 35px;
+      margin-top: 19px;
+    }
+    @include laptopS {
+      font-size: 20px;
+      margin-top: 13px;
     }
     img {
       width: 2.2em;
@@ -229,7 +256,12 @@
     font-size: 14px;
   }
   @include mobileXL {
+    margin-top: 13px;
     font-size: 20px;
+  }
+  @include laptopS {
+    margin-top: 12px;
+    font-size: 15px;
   }
   &__btn {
     font-size: 3em;

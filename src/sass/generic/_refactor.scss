@@ -1,8 +1,10 @@
 body{
+  height: 100vh;
   font-family: $fontFamily;
   background-repeat: no-repeat;
-  background-size: 180% 100%;
+  background-size: cover;
   background-position: 50% 0;
+  background-attachment: fixed;
 }
 body, html {
   padding: 0;
@@ -39,6 +41,9 @@ color: #ffc14f;
   }
   @include laptopS {
     width: 1000px;
+  }
+  @include laptopM {
+    width: 1240px;
   }
 }
 :root{
