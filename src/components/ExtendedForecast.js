@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getOneCall } from "../functions/getWeather";
+import { getDailyWeather } from "../functions/getWeather";
 import { getDay } from "../functions/getDay";
 import { getIcon } from "../functions/getIcon";
 import humiditySrc from "../images/humidity.png";
@@ -16,9 +16,9 @@ export const ExtendedForecast = ({ lat, lon }) => {
     /** this state contains weather */
     const [extendedForecast, setExtendedForecast] = useState(null);
 
-    //setting the weather state (by getOneCall function)
+    //setting the weather state (by getDailyWeather function)
     useEffect(() => {
-        getOneCall(setExtendedForecast, lat, lon);
+        getDailyWeather(setExtendedForecast, lat, lon);
     }, [lat, lon,]);
 
     // blocking display if the weather has not been downloaded yet

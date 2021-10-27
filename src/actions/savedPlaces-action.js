@@ -1,5 +1,5 @@
 /**
- * REACT REDUX ACTION - change array with saved places in redux state
+ * REDUX ACTION - change array with saved places in redux state
  * @param {*} name - name of the place that you want to save
  */
 export const changeSavedPlaces = name => {

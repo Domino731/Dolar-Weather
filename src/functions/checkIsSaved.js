@@ -1,5 +1,5 @@
 /**
- * check if particular name place has been saved in local storage ('savedPlaces')
+ * check if particular place name has been saved in local storage ('savedPlaces')
  * @param {string} placeName - name of place that you want to check 
  * @returns boolean value
  */

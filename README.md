@@ -1,92 +1,32 @@
-Hey :), here is the documentation file for my weather app
+# Dollar Weather App 
+This is my first project - weather application written with react, with the ability to save your favorite places to local storage.
+## Technology
+* JavaScript
+* Sass
+* React
+* React Redux
+* OpenWeather API - https://openweathermap.org/api
 
-Below you have the short description of files and what is it for 
-////////////////////////////////////////////////////////////////
+## Components
+* `Navigation` - responsible for navigation bar with search input by which user can search for particular place. There is also list with saved places.
+* `MainForecast` - component which is rendering main content on site. Includes current weather, and forecast for next 7 days ( there is nested `ExtendedForecast` component)
+* `ExtendedForecast` - rendering weather forecast for next 7 days
+## Available Functions
+* `checkIsSaved()` - this function is checking if particular place name has been saved in local storage ('savedPlaces'). This function is used in `MainForecast` component to detect if user has already saved searched place name. If he has, then color of the button (hearth icon) which is responsible for saving new place, will be white with red box shadow, otherwise will be red
+* `getBackgroundData()` - this function is returning data about background which is relates to the current weather. Data is including source of background and freepik author attribute. This function is used in `MainForecast` component in order to set body background and create glass effect. 
+* `getDay()` - this function is returning name of the particular day. He's needed to set day names in `ExtendedForecast` component beacuse `getDailyWeather` function is returning data about weather with raw timestamp so it's needed to format this timestamp in this function and return appropriate day name.
+* `getIcon()` -  get image which is representing current weather. Used in `MainForecast` component and `ExtendedForecast` to display weather icon. 
+* `getRandomCapital()` - returning random capital name. Used in redux reducer - `searchBarValue`. This value is passed into `MainForecast` props, so this component can fetch data about this random place -> when the user opens this application the weather forecast of this random capital will be shown in `MainForecast` component. 
+* `getSavedPlaces()` - returning array with names of saved places from local starage ('savedPlaces').
+* `getDailyWeather()` - fetch data about weather forecast for next 7 days in particular place. Used in `ExtendedForecast` component
+* `getCurrentWeather()` - fetch data about current weather in particular place, used in `MainForecast` component.
+## React Redux structure
+### ***Reducers***
+* `savedPlaces` - array with names of saved places from local storage (sorted alphabetically). Base on this array `Navigation` component will be rendering list with saved places.
+* `searchBarValue` - string which is representing name of searched place. Initially it is random place (`getRandomCapital() function`). This value is changing by entering new place name in input in `Navigation` component by `searchSpecificPlace()` function. This value is passed into `MainForecast` component in order to fetch weather forecast data about this searched place. 
+### ***Actions***
+* `changeSavedPlaces()` - change array with saved places in redux state
+* `changeSavedPlaces()` - change searchBarValue in redux state
 
-
-/////////////////////////ACTIONS
-
-
---[folder] actions - folder with actions for reducers
-
----=> [FILE] searchBar_value-actions.js - by this function you can change the value in reducer(used in navigation component(value from input))
-
-
-
-/////////////////////////COMPONENTS
-
---[folder] components - folder with components
-
----=> [FILE] ExtendedForecast.js - component who is renders the weather for the next 7 days,
-the weather is taken by the [function] getOneCall (used in MainForecast component).
-
----=> [FILE] MainForecast.js - renders the main content of page, including today's weather and daily weather(by ExtendedForecast component).
-the weather is taken by the [function] getCurrent (which takes value from reducer searchBar_value)
-
----=> [FILE] Navigation.js - renders simple navigation with value, on which the action is superimposed searchBar_value-actions whereby you change
-the reducer searchBar_value(responsible for download the weather of a particular location)
-
-
-
-
-
-
-/////////////////////////FUNCTIONS
-
-
---[folder] functions - folder with functions
-
----=> [FILE] getDay.js - returns the day of the week (used in ExtendedForecast component)
-
----=> [file] getIcon.js -  returns an icon that represents the current weather (used in ExtendedForecast, MainForecast components )
-
----=> [file] getWeather.js 
-           -[function] getCurrent - returns the weather for today
-           -[function] getOneCall - returns the weather for next 7 days
-
----=> [file] months&daysArray.js - file with arrays of days and months which are used to display the current date
-
----=> [file] randomCapital.js - a file with an array of capitals, and the function returns a randomly drawn capital from this array
-file with arrays of days and months which are used to display the current date(used in searchBar_value.js)
-
----=> [file] saveCity.js - This is a function overlaid on the 'heart' in the MainForecast component, 
-it has the purpose of saving the currently searched city after a click, which is passed to localStorage and can be displayed in the Navigation component 
-
----=> [file] setGradient - sets the body background, by current weather (used in MainForecast component)
-
-
-
-
-/////////////////////////REDUCERS
-
-
---[folder] reducers - folder with reducers
-
----=> [file] index.js - file with all reducers
-
----=> [file] searchBar_value.js - reducer with value that is used to download the weather
-
-
-
-
-/////////////////////////STYLES
-
-
---[folder] sass - folder with sass styles
-
----[folder] elements
-  ---=> [file] _extendedForecast.scss - styles for ExtendedForecast component
-  ---=> [file] _mainForecast.scss - styles for MainForecast component
-  ---=> [file] _navigation.scss - styles for Navigation component
-
----[folder] generic
-  ---=> [file] _refactor.scss - file with container style and setting of body
-  ---=> [file] _reset.scss - reset file
-  ---=> [file] _variables - file with variables
-
----[folder] media_querry - file with media queries
-
-
-
-
-
+## Local storage data structure
+* `savedPlaces` - list of saved places

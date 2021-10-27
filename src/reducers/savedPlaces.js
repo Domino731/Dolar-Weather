@@ -1,6 +1,6 @@
 import { getSavedPlaces } from "../functions/getSavedPlaces";
 /**
- reducer with place name, at first it will be random capital name which is set by getRandomCapital() function
+ REDUX - reducer with array with names of saved places from local storage ('savedPlaces')
  */
 export const savedPlaces = (state = getSavedPlaces(), action) => {
     switch (action.type) {
