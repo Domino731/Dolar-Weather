@@ -27,6 +27,9 @@
     border-radius: 28px;
     font-size: 15px;
   }
+  @include laptopM {
+    font-size: 17px;
+  }
 
   &__title {
     width: 100%;
@@ -78,7 +81,9 @@
     @include laptopS {
       font-size: 15px;
     }
-
+    @include laptopM {
+      font-size: 16px;
+    }
   }
   &__temperatureFeel {
     font-size: 2.1em;
@@ -127,6 +132,9 @@
       font-size: 19px;
       padding-left: 41px;
     }
+    @include laptopM {
+      font-size: 22px;
+    }
     span,
     div {
       font-size: 2em;
@@ -149,6 +157,9 @@
       }
       @include laptopS {
         width: 159px;
+      }
+      @include laptopM {
+        width: 207px;
       }
     }
     div {
@@ -206,6 +217,10 @@
     @include laptopS {
       font-size: 20px;
       margin-top: 13px;
+    }
+    @include laptopM {
+      font-size: 22px;
+      margin-top: 15px;
     }
     img {
       width: 2.2em;
