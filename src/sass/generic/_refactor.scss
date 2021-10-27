@@ -1,6 +1,8 @@
 body{
   font-family: $fontFamily;
-  background-repeat: repeat-x;
+  background-repeat: no-repeat;
+  background-size: 180% 100%;
+  background-position: 50% 0;
 }
 body, html {
   padding: 0;
@@ -25,6 +27,9 @@ color: #ffc14f;
   margin-bottom: 11px;
   @include mobileM {
     width: 370px;
+  }
+  @include mobileL {
+    width: 420px;
   }
 }
 :root{
