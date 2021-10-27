@@ -37,7 +37,13 @@ color: #ffc14f;
   @include tablet {
     width: 760px;
   }
+  @include laptopS {
+    width: 1000px;
+  }
 }
 :root{
   font-size: 10px;
+  @include tablet {
+    font-size: 17px;
+  }
 }

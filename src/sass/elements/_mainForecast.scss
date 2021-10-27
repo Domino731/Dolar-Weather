@@ -23,6 +23,9 @@
   @include mobileXL {
     font-size: 24px;
   }
+  @include laptopS {
+    border-radius: 28px;
+  }
   &__title {
     width: 100%;
     text-align: center;

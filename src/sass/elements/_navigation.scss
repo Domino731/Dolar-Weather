@@ -16,6 +16,9 @@
   @include tablet {
     height: 64px;
   }
+  @include tablet {
+    border-radius: 0 0 28px 28px;
+  }
   &__searchBar {
     background-color: $backgroundColor-opacity;
     width: 76%;
@@ -64,12 +67,18 @@
       color: $color-weatherForecast-condition;
       cursor: pointer;
     }
+    @include tablet {
+      font-size: 47px;
+      margin-top: 9px;
+    }
   }
   &__title {
     font-size: $fontSize-savedTitle;
-
     text-shadow: 1px 1px 2px #ffffff;
     margin-top: 2px;
+    @include tablet {
+      font-size: 55px;
+    }
   }
 
   &__list {
@@ -88,8 +97,12 @@
     @include mobileM {
       margin-top: 12px;
     }
-    @include mobileXL {
+    @include mobileXL { 
       border-top: 3px solid rgb(255, 255, 255);
+    }
+    @include tablet {
+      font-size: 14px;
+      border-top: 5px solid rgb(255, 255, 255);
     }
   }
   &__listItem {
