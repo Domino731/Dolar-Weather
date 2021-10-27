@@ -31,6 +31,12 @@ color: #ffc14f;
   @include mobileL {
     width: 420px;
   }
+  @include mobileXL {
+    width: 590px;
+  }
+  @include tablet {
+    width: 760px;
+  }
 }
 :root{
   font-size: 10px;

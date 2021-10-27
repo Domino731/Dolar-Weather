@@ -9,9 +9,12 @@
   justify-content: center;
   align-items: center;
   font-size: 10px;
- 
+
   @include mobileL {
     height: 47px;
+  }
+  @include tablet {
+    height: 64px;
   }
   &__searchBar {
     background-color: $backgroundColor-opacity;
@@ -23,17 +26,23 @@
     text-align: center;
     font-size: 19px;
     color: $fontColor-primary;
- 
+
     &:focus {
       background-color: rgba(0, 0, 0, 0.2);
+    }
+    @include tablet {
+      font-size: 26px;
     }
   }
   &__toggleIcon {
     margin-right: 10px;
-    img{
+    img {
       height: 30px;
       width: auto;
       object-fit: cover;
+      @include tablet {
+        height: 44px;
+      }
     }
   }
 }
@@ -78,6 +87,9 @@
     }
     @include mobileM {
       margin-top: 12px;
+    }
+    @include mobileXL {
+      border-top: 3px solid rgb(255, 255, 255);
     }
   }
   &__listItem {
