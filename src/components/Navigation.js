@@ -65,7 +65,7 @@ const Navigation = ({ changeSearchBarValue, savedPlaces }) => {
 
                     // rendering list elements by savedCities state (array from local storage - 'savedPlaces')
                     savedPlaces.map((el, key) => (
-                        <li className='savedCities__listItem' key={key + `savedCity`} onClick={() => handleChangeCity(el)}>{el}</li>
+                        typeof el === 'string' && <li className='savedCities__listItem' key={key + `savedCity`} onClick={() => handleChangeCity(el)}>{el}</li>
                     ))
                 }</ul>
 

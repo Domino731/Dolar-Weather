@@ -42,7 +42,7 @@ const MainForecast = ({ place, saveNewPlace, savedPlaces }) => {
     // check if user has already save searched place
     useEffect(() => {
         setIsSaved(checkIsSaved(place.location));
-    }, [savedPlaces]);
+    }, [savedPlaces, place.location]);
 
     // set background data
     useEffect(() => {

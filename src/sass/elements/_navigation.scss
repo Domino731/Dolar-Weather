@@ -67,6 +67,7 @@
   align-items: center;
   flex-direction: column;
   color: white;
+  overflow: hidden;
   .closeIcon {
     font-size: $fontSize-savedCloseIcon;
     margin-top: 5px;
