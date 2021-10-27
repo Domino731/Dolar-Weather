@@ -199,7 +199,7 @@ const MainForecast = ({ place, saveNewPlace, savedPlaces }) => {
 
 const mapStateToProps = state => ({
     /** value from input with name of searched palce */
-    place: state.searchBar_value,
+    place: state.searchBarValue,
     /** array with saved places in local storage ('savedPlaces') */
     savedPlaces: state.savedPlaces,
 });
