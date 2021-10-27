@@ -1,7 +1,8 @@
-// this action from redux is responsible for changing the reducer
-// using in navigation component (set by value from input)
-
-export const changeSearchBarValue = text =>({
+/**
+ * REACT REDUX ACTION - change searchBarValue in redux state
+ * @param {*} location - new text 
+ */
+export const changeSearchBarValue = location =>({
     type: "CHANGE_CITY",
-    location: text
+    location
 })

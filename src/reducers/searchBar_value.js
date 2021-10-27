@@ -1,6 +1,8 @@
-import {getRandomCapital} from "../functions/randomCapital"; // function which is returning random capital
+import {getRandomCapital} from "../functions/randomCapital";
 
-//reducer with city name, based on which the weather is searched
+/**
+ * reducer with place name, which is passed into MainForecast component in order to fetch data about weather forecast for specific place 
+ */
 export const searchBar_value = (state = {location: getRandomCapital()}, action) => {
     switch (action.type) {
         case "CHANGE_CITY":

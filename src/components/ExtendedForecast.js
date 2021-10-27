@@ -1,56 +1,67 @@
-import {useEffect, useState} from "react";
-import {getOneCall} from "../functions/getWeather"; 
-import {getDay} from "../functions/getDay"; 
-import {getIcon} from "../functions/getIcon";
+import { useEffect, useState } from "react";
+import { getOneCall } from "../functions/getWeather";
+import { getDay } from "../functions/getDay";
+import { getIcon } from "../functions/getIcon";
 import humiditySrc from "../images/humidity.png";
 import airSrc from "../images/air.png";
 import pressureSrc from "../images/pressure.png"
-//this component displays the weather for the next 7 days
-//the props which he gets are responsible for getting the specific location (by getOneCall function)
-// it's used in MainForecast component
-export const ExtendedForecast = ({lat, lon}) => {
-    //this state contains weather
-    const [extendedForecast, setExtendedForecast] = useState("")
+
+/**
+ * Component which is displaying weather forecast for the next 7 days
+ * @param {number} lat - x cordinates
+ * @param {number} lon- y cordinates 
+ */
+export const ExtendedForecast = ({ lat, lon }) => {
+
+    /** this state contains weather */
+    const [extendedForecast, setExtendedForecast] = useState(null);
 
     //setting the weather state (by getOneCall function)
     useEffect(() => {
-        getOneCall(setExtendedForecast, lat, lon)
-    }, [lat, lon,])
+        getOneCall(setExtendedForecast, lat, lon);
+    }, [lat, lon,]);
 
-    //blocking display if the weather has not been downloaded yet
-    if (extendedForecast === "") {
-        return null
+    // blocking display if the weather has not been downloaded yet
+    if (extendedForecast === null) {
+        return `loading...`;
     }
 
-    //rendering daily weather by DailyWeather component
-    return (<>
-            <div className="extendedForecast">
-                {
-                    extendedForecast.daily.map((el, key) => {
-                        return <DailyWeather daily={extendedForecast} dayNumber={key} key={key}/>
-                    })
-                }
-            </div>
-        </>
-    )
+    // rendering daily weather by using DailyWeather component
+    return <div className="extendedForecast">
+        {
+            extendedForecast.daily.map((el, key) => {
+                return <DailyWeather daily={el} key={key} />
+            })
+        }
+    </div>
 }
 
-//he get from props information responsible for daily weather
-// -daily => array with daily weather
-// -dayNumber => number of the day, which helps to find weather from array
-const DailyWeather = ({daily, dayNumber}) => {
+/**
+ * Component which is responsible for weather forecast for single day
+ * @param {object} daily - data about weather forecast
+ */
+const DailyWeather = ({ daily }) => {
 
-    const [sky] = useState(daily.daily[dayNumber].weather[0].main) // sky
-    const [temperature_max] = useState(daily.daily[dayNumber].temp.max) // max temperature of the day
-    const [temperature_min] = useState(daily.daily[dayNumber].temp.min) // min temperature of the day
-    const [wind] = useState(daily.daily[dayNumber].wind_speed) // wind speed
-    const [humidity] = useState(daily.daily[dayNumber].humidity) // humidity
-    const [pressure] = useState(daily.daily[dayNumber].pressure) // pressure
+    // data about weather in particular day
+    /** sky */
+    const sky = daily.weather[0].main;
+    /** max temperature of the day */
+    const temperature_max = daily.temp.max;
+    /** min temperature of the day */
+    const temperature_min = daily.temp.min;
+    /**wind speed */
+    const wind = daily.wind_speed;
+    /**humidity */
+    const humidity = daily.humidity;
+    /** pressure */
+    const pressure = daily.pressure;
 
     return (
         <div className="extendedDaily__container">
+
             {/*day of the week received by getDay function*/}
-            <h1 className="extendedForecast__title">{getDay(daily.daily, dayNumber)}</h1>
+            <h1 className="extendedForecast__title">{getDay(daily)}</h1>
+
             {/*container which contains information about specific day*/}
             <div className="extendedDaily__content">
 
@@ -68,6 +79,7 @@ const DailyWeather = ({daily, dayNumber}) => {
                 </div>
 
             </div>
+
         </div>
     )
 }

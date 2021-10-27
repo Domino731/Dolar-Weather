@@ -1,3 +1,8 @@
+/**
+ * check if particular name place has been saved in local storage ('savedPlaces')
+ * @param {string} placeName - name of place that you want to check 
+ * @returns boolean value
+ */
 export const checkIsSaved = (placeName) => {
     const localData = localStorage.getItem('savedPlaces');
     if(localData){
@@ -5,6 +10,6 @@ export const checkIsSaved = (placeName) => {
         return data.includes(placeName);
     }
     else{
-        return false
+        return false;
     }
 }

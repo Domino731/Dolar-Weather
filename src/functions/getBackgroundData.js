@@ -1,12 +1,14 @@
-// this function return the background color which is dependent from weather
-// sky - weather conditions
 import clear from "../images/clear_sky.jpg";
 import haze from "../images/haze.jpg";
 import snow from "../images/snow.jpg";
 import rain from "../images/rain.jpg";
 import thunderstorm from "../images/thunderstorm.jpg";
 import clouds from "../images/clouds.jpg";
-import mist from "../images/mist.jpg"
+import mist from "../images/mist.jpg";
+
+/**
+ * array with data about backgrounds - source and freepik author attribute
+ */
 const backgroundsData = [
     {
         src: clouds,
@@ -38,7 +40,7 @@ const backgroundsData = [
     }
 ];
 
-export const setGradient = (sky) => {
+export const getBackgroundData = (sky) => {
     if (sky === "Clouds") {
         return backgroundsData[0]
     } else if (sky === "Haze") {

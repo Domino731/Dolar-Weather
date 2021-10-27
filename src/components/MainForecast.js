@@ -1,63 +1,74 @@
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import { getCurrent } from "../functions/getWeather";
+import { getCurrentWeather } from "../functions/getWeather";
 import { monthsDaysArray } from "../functions/months&daysArray";
 import { daysArray } from "../functions/months&daysArray";
 import { getIcon } from "../functions/getIcon";
-import { setGradient } from "../functions/setGradient";
+import { getBackgroundData } from "../functions/getBackgroundData";
 import { ExtendedForecast } from "./ExtendedForecast";
-import { saveCity } from "../functions/saveCity";
 import humidity from "../images/humidity.png";
 import air from "../images/air.png";
 import pressure from "../images/pressure.png";
-import rain from "../images/rain.png";
 import { changeSavedPlaces } from "../actions/savedPlaces-action";
 import { checkIsSaved } from "../functions/checkIsSaved";
 import mountains from "../images/mountains.jpg";
 import world from "../images/world.png"
-//this component rendering the main content on page(weather forecast)
-const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
 
-    // the state which contains the weather forecast, getting by getCurrent()
+//this component rendering the main content on page(weather forecast)
+/**
+ * this component is responsible for rendering main content with weather forecast
+ * @param place (REDUX) - name of particular place, needed to fetch data about weather forecast
+ * @param saveNewPlace (REDUX) - redux action that is responsible for saving new place into local storage
+ * @savedPlaces (REDUX) - needed for react hook for listening for changes when user add new place (color of heath will change), and it is also need
+ * to check if user has already saved this place in local storage
+ */
+const MainForecast = ({ place, saveNewPlace, savedPlaces }) => {
+
+    /** the state which contains data about the weather forecast */
     const [currentForecast, setCurrentForecast] = useState(null);
 
-    const [isSaved, setIsSaved] = useState(checkIsSaved(forecast.location));
+    /** state with boolean value which is according to if user has save searched place*/
+    const [isSaved, setIsSaved] = useState(checkIsSaved(place.location));
 
-    // state with date
-    const [date, setDate] = useState(new Date())
-
+    /** data about background - graphic source and author attribute from freepik */
     const [backgroundData, setBackgroundData] = useState({ src: '', author: '' });
 
-    //setting and updating weather in state(currentForecast)
-    useEffect(() => {
-        getCurrent(setCurrentForecast, forecast.location);
-    }, [forecast.location])
 
+    // fetch data about weather by using getCurrentWeather function
     useEffect(() => {
-        setIsSaved(checkIsSaved(forecast.location))
-    }, [savedPlaces])
+        getCurrentWeather(setCurrentForecast, place.location);
+    }, [place.location]);
+
+    // check if user has already save searched place
     useEffect(() => {
-        currentForecast && setBackgroundData(setGradient(currentForecast.weather[0].main));
+        setIsSaved(checkIsSaved(place.location));
+    }, [savedPlaces]);
+
+    // set background data
+    useEffect(() => {
+        currentForecast && setBackgroundData(getBackgroundData(currentForecast.weather[0].main));
     }, [currentForecast]);
 
-    //blocking display in pending
+    // blocking display while forecast data is fetching
     if (currentForecast === null) {
         return null
     }
 
-
-    //if the city name is incorrect
+    // if the place name is incorrect, then getCurrentWeather function will return undefined so it's needed to infrom user about incorrect place name
     else if (currentForecast === undefined) {
         return (
             <>
-                <style>{`body {
-             background-image: url(${mountains})} 
-            `}</style>
+
+                {/* set background  */}
+                <style>{`body{ background-image: url(${mountains})}`}</style>
+
+                {/* notify the user */}
                 <main className="container">
+
                     <div className="forecast_container">
                         <div className="error">
                             <h2>Place not found</h2>
-                            <img src={world} />
+                            <img src={world} alt='World' title='Not found' />
                         </div>
                     </div>
 
@@ -67,20 +78,19 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
 
                 </main>
             </>
-        )
+        );
     }
 
 
-    //if the city name is correct
+    // content with weather forecast
     return (
-
-
         <main className="container">
 
-            {/*body with changed background by setGradient()*/}
+            {/* set a background that relates to the current weather*/}
             <style>{`body {
             background-image: url(${backgroundData.src})} 
             `}</style>
+
 
             <div className="forecast_container">
 
@@ -89,7 +99,9 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
 
                     <div className='forecastGlass' style={{ backgroundImage: `url(${backgroundData.src})` }} />
                     <div className="save">
-                        {/*saving the city in local storage by saveCity()*/}
+
+                        {/* button  (hearth icon) by which user can save searched place into local storage (by saveNewPlace() function, in which is logic responsible for saving this place is placed )*/}
+                        {/* when user save new place, he will be displayed in navigation */}
                         <div
                             className={`save__btn ${isSaved ? 'save__btn-saved' : 'save__btn-notSaved'}`}
                             onClick={() => saveNewPlace(currentForecast.name)}
@@ -100,16 +112,16 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
                     </div>
 
 
-                    {/*city name and current date*/}
-                    <h1 className="mainForecast__title" >
-                        <i className="fas fa-heart "
-                            onClick={() => saveCity(currentForecast.name)} />{currentForecast.name}
-                    </h1>
-                    <h2 className="mainForecast__date">{daysArray[date.getDay()]}, {monthsDaysArray[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</h2>
+                    {/* place name */}
+                    <h1 className="mainForecast__title">{currentForecast.name}</h1>
+
+                    {/* current data */}
+                    <h2 className="mainForecast__date">{daysArray[new Date().getDay()]}, {monthsDaysArray[new Date().getMonth()]} {new Date().getDate()}, {new Date().getFullYear()}</h2>
+
                     {/*current weather */}
                     <div className="currentWeather">
 
-                        {/*main temperature and icon*/}
+                        {/* temperature and weather icon */}
                         <div className="currentWeather__temperature">
                             <div>{getIcon(currentForecast.weather[0].main)}</div>
                             <div>{Math.round(currentForecast.main.temp)}&#176;
@@ -117,19 +129,25 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
                             <div>{currentForecast.weather[0].description}</div>
                         </div>
 
-                        {/*min & max temperature and conditions*/}
+                        {/* min & max temperature and conditions */}
                         <div className="currentWeather__details">
 
                             <div className="currentWeather__generalWrapper">
+
+
                                 <h3 className="currentWeather__temperatureFeel">Feels
                                     like {Math.round(currentForecast.main.feels_like)}&#176; </h3>
 
                                 {/*min & max temperature*/}
                                 <div className="currentWeather__detailsMinMax">
+
+                                    {/* max */}
                                     <div title='Highest temperature'>
                                         <i className="fas fa-long-arrow-alt-up" />
                                         <span>{Math.round(currentForecast.main.temp_max)}&#176;</span>
                                     </div>
+
+                                    {/* min */}
                                     <div title='Lowest temperature'>
                                         <i className="fas fa-long-arrow-alt-down" />
                                         <span>{Math.round(currentForecast.main.temp_min)}&#176;</span>
@@ -141,16 +159,19 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
                             {/*weather conditions*/}
                             <div className="currentWeather__detailsConditions">
 
+                                {/* Humidity */}
                                 <div className='currentWeather__singleDetail'>
                                     <img src={humidity} alt='Water' title='Humidity' /> <span>Humidity</span>
                                     <strong className='humidityColor'> {currentForecast.main.humidity}%</strong>
                                 </div>
 
+                                {/* Wind */}
                                 <div className='currentWeather__singleDetail'>
                                     <img src={air} alt='Wind' title='Wind' /> <span>Wind</span>
                                     <strong className='windColor'> {Math.floor(currentForecast.wind.speed)}kph</strong>
                                 </div>
 
+                                {/* Pressure */}
                                 <div className='currentWeather__singleDetail'>
                                     <img src={pressure} alt='Pressure' title='Pressure' /><span>Pressure</span>
                                     <strong className='pressureColor'> {currentForecast.main.pressure} hpa</strong>
@@ -159,6 +180,7 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
                             </div>
 
                         </div>
+
                     </div>
 
                     {/*rendering component which is returning daily weather, transmits coords from state (currentForecast)*/}
@@ -166,19 +188,25 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
                 </div>
             </div>
 
+            {/* freepik author attribute */}
             <div className="freepik__atribbute">{backgroundData.author}</div>
 
         </main>
     )
 }
 
+////////// REDUX /////////////////////
 
-//getting name of city (random)
 const mapStateToProps = state => ({
-    forecast: state.searchBar_value,
+    /** value from input with name of searched palce */
+    place: state.searchBar_value,
+    /** array with saved places in local storage ('savedPlaces') */
     savedPlaces: state.savedPlaces,
 });
+
+
 const mapDispatchToProps = dispatch => ({
+    /** saving new place name into local storage ('savedPlaces') */
     saveNewPlace: (name) => dispatch(changeSavedPlaces(name))
 });
 

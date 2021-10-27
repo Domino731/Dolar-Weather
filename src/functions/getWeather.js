@@ -5,7 +5,7 @@ const key = `e105d21fb59c10d6ab6a04386a749917`; // API key
 // returning current weather in MainForecast component
 // set - setting the forecast into  state
 // city - searching forecast by city name
-export const getCurrent =  (set, city) => {
+export const getCurrentWeather =  (set, city) => {
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`)
         .then(response => response.json())
         .then(response => {

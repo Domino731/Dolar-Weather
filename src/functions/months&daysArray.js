@@ -1,4 +1,6 @@
-//  arrays with days and months which enable to display specific date in MainForecast component
+/**
+ * array with all month names
+ */
 export const monthsDaysArray = [
     "January",
     "February",
@@ -12,4 +14,8 @@ export const monthsDaysArray = [
     "October", "November",
     "December"
 ]
+
+/**
+ * array with all day names
+ */
 export const daysArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
