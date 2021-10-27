@@ -45,6 +45,12 @@ color: #ffc14f;
   @include laptopM {
     width: 1240px;
   }
+  @include laptopXL {
+     width: 1400px;
+  }
+  @include desktopS {
+    width: 1590px;
+  }
 }
 :root{
   font-size: 10px;

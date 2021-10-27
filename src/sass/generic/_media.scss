@@ -39,7 +39,7 @@
         @content;
     }
 }
-@mixin desktopM {
+@mixin desktopS {
     @media screen and (min-width: 1600px) {
         @content;
     }
