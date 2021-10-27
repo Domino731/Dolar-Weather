@@ -7,7 +7,7 @@ const key = `e105d21fb59c10d6ab6a04386a749917`;
  * @param {*} city - name of place that you want to download his weather forecast
  */
 export const getCurrentWeather = (setState, city) => {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`)
         .then(response => response.json())
         .then(response => {
             
