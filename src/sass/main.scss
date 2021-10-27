@@ -1,15 +1,13 @@
 @import "generic/_variables.scss";
 @import "generic/_reset.scss";
+@import "generic/media";
 @import "generic/refactor";
 @import "elements/_navigation";
 @import "elements/_mainForecast.scss";
 @import "elements/_extendendForecast.scss";
 
-@import "media_querry/375px/_container";
-@import "media_querry/375px/_fontSize";
-//@import "media_querry/375px/_mainForecast.scss";
-@import "media_querry/375px/_navigation.scss";
-@import "media_querry/375px/_extendedForecast.scss";
+
+
 
 @import "media_querry/600px/_fontSize";
 @import "media_querry/600px/_container.scss";

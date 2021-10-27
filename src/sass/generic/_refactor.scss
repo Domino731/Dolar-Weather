@@ -20,9 +20,12 @@ color: #3593f8;
 color: #ffc14f;
 }
 .container{
-  width: 375px;
+  width: 315px;
   margin: 0 auto;
   margin-bottom: 11px;
+  @include mobileM {
+    width: 370px;
+  }
 }
 :root{
   font-size: 10px;

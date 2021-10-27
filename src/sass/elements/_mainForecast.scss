@@ -46,6 +46,9 @@
 
   &__generalWrapper {
     font-size: 10px;
+    @include mobileM {
+      font-size: 12px;
+    }
   }
   &__temperatureFeel {
     font-size: 2.1em;
@@ -73,6 +76,10 @@
     text-shadow: $textShadow;
     font-size: 10px;
     padding-left: 10px;
+    @include mobileM {
+      padding-left: 14px;
+      font-size: 12px;
+    }
     span,
     div {
       font-size: 2em;
@@ -81,6 +88,9 @@
       width: 77px;
       height: auto;
       object-fit: cover;
+      @include mobileM {
+        width: 94px;
+      }
     }
     div {
       margin-top: 0.2em;
@@ -115,6 +125,9 @@
     align-items: center;
     letter-spacing: 0.063rem;
     margin-top: 7px;
+    @include mobileM {
+      font-size: 13px;
+    }
     img {
       width: 2.2em;
       height: auto;
@@ -157,6 +170,9 @@
   display: flex;
   justify-content: center;
   font-size: 10px;
+  @include mobileM {
+    font-size: 11px;
+  }
   &__btn {
     font-size: 3em;
     &:focus {
@@ -167,8 +183,9 @@
     }
     &-notSaved{
       color: #d6cecd;
-      text-shadow: 0 0 6px #f9320c;
+      text-shadow: 0 0 0.6em #f9320c;
     }
   }
 
+  
 }

@@ -61,7 +61,7 @@
   }
 
   &__list {
-    margin-top: 23px;
+    margin-top: 10px;
     font-size: $fontSize-savedList;
     width: 100%;
     border-top: 2px solid rgb(255, 255, 255);
@@ -72,6 +72,9 @@
     }
     &::-webkit-scrollbar-thumb {
       color: $color-weatherForecast-condition;
+    }
+    @include mobileM {
+      margin-top: 12px;
     }
   }
   &__listItem {
