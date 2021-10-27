@@ -50,7 +50,7 @@
       @include laptopS {
         height: 30px;
       }
-      &:hover{
+      &:hover {
         cursor: pointer;
       }
     }
@@ -78,6 +78,18 @@
       font-size: 47px;
       margin-top: 9px;
     }
+    @include laptopS {
+      font-size: 30px;
+      margin-top: 6px;
+    }
+    @include laptopL {
+      font-size: 33px;
+      margin-top: 7px;
+    }
+    @include laptopXL {
+      font-size: 37px;
+      margin-top: 9px;
+    }
   }
   &__title {
     font-size: $fontSize-savedTitle;
@@ -85,6 +97,15 @@
     margin-top: 2px;
     @include tablet {
       font-size: 55px;
+    }
+    @include laptopS {
+      font-size: 37px;
+    }
+    @include laptopL {
+      font-size: 41px;
+    }
+    @include laptopXL {
+      font-size: 44px;
     }
   }
 
@@ -110,6 +131,15 @@
     @include tablet {
       font-size: 14px;
       border-top: 5px solid rgb(255, 255, 255);
+    }
+    @include laptopS {
+      font-size: 10px;
+    }
+    @include laptopL {
+      font-size: 12px;
+    }
+    @include laptopXL {
+      font-size: 14px;
     }
   }
   &__listItem {

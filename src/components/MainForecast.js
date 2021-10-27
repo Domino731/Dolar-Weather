@@ -33,7 +33,7 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
         getCurrent(setCurrentForecast, forecast.location);
     }, [forecast.location])
 
-    useEffect(()=> {
+    useEffect(() => {
         setIsSaved(checkIsSaved(forecast.location))
     }, [savedPlaces])
     useEffect(() => {
@@ -57,12 +57,12 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
                     <div className="forecast_container">
                         <div className="error">
                             <h2>Place not found</h2>
-                            <img src={world}/>
+                            <img src={world} />
                         </div>
                     </div>
 
                     <div className="freepik__atribbute">
-                    <a href="https://www.freepik.com/photos/tree">Tree photo created by wirestock - www.freepik.com</a>
+                        <a href="https://www.freepik.com/photos/tree">Tree photo created by wirestock - www.freepik.com</a>
                     </div>
 
                 </main>
@@ -87,13 +87,13 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
                 {/* set background in container with forecast in order to create glass effect */}
                 <div className="mainForecast"  >
 
-                    <div className='forecastGlass'  style={ {backgroundImage: `url(${backgroundData.src})`}}/>
+                    <div className='forecastGlass' style={{ backgroundImage: `url(${backgroundData.src})` }} />
                     <div className="save">
                         {/*saving the city in local storage by saveCity()*/}
-                        <div 
-                        className={`save__btn ${isSaved ? 'save__btn-saved' : 'save__btn-notSaved'}`} 
-                        onClick={() => saveNewPlace(currentForecast.name)}
-                        title={`save__btn ${isSaved ? 'Save this location' : 'Remove this location from saved'}`}
+                        <div
+                            className={`save__btn ${isSaved ? 'save__btn-saved' : 'save__btn-notSaved'}`}
+                            onClick={() => saveNewPlace(currentForecast.name)}
+                            title={`save__btn ${isSaved ? 'Save this location' : 'Remove this location from saved'}`}
                         >
                             <i className="fas fa-heart" />
                         </div>
@@ -126,10 +126,15 @@ const MainForecast = ({ forecast, saveNewPlace, savedPlaces }) => {
 
                                 {/*min & max temperature*/}
                                 <div className="currentWeather__detailsMinMax">
-                                    <i className="fas fa-long-arrow-alt-up" />
-                                    <span>{Math.round(currentForecast.main.temp_max)}&#176;</span>
-                                    <i className="fas fa-long-arrow-alt-down" />
-                                    <span>{Math.round(currentForecast.main.temp_min)}&#176;</span>
+                                    <div title='Highest temperature'>
+                                        <i className="fas fa-long-arrow-alt-up" />
+                                        <span>{Math.round(currentForecast.main.temp_max)}&#176;</span>
+                                    </div>
+                                    <div title='Lowest temperature'>
+                                        <i className="fas fa-long-arrow-alt-down" />
+                                        <span>{Math.round(currentForecast.main.temp_min)}&#176;</span>
+                                    </div>
+
                                 </div>
                             </div>
 

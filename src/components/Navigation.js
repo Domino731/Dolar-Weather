@@ -46,7 +46,7 @@ const Navigation = ({changeSearchBarValue,  savedPlaces}) => {
            {/*saved cities in list*/}
 
             {flag !== true && <div className="savedCities">
-                <i className="far fa-times-circle closeIcon" onClick={handleChangeFlag}/>
+                <i className="far fa-times-circle closeIcon" onClick={handleChangeFlag} title='Close'/>
                 <h1 className="savedCities__title">SAVED</h1>
                 <ul className="savedCities__list">{
                     // rendering list elements by savedCities state(Local Storage)

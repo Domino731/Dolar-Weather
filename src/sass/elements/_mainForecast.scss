@@ -124,6 +124,9 @@
     margin-top: 0.3em;
     margin-bottom: 0.5em;
     font-size: 2.4em;
+    & > div {
+      display: inline-block;
+    }
     i:first-child {
       color: #f9320c;
     }
