@@ -1,5 +1,4 @@
 import { getDay } from "../functions/getDay";
-import { getIcon } from "../functions/getIcon";
 import humiditySrc from "../images/humidity.png";
 import airSrc from "../images/air.png";
 import pressureSrc from "../images/pressure.png"

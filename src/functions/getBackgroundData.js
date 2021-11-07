@@ -20,7 +20,7 @@ const backgroundsData = [
     },
     {
         src: haze,
-        author: <a href='https://www.freepik.com/photos/city'>City photo created by teksomolika - www.freepik.com</a>
+        author: <a href='https://www.freepik.com/photos/travel'>Travel photo created by teksomolika - www.freepik.com</a>
     },
     {
         src: snow,

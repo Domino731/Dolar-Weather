@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { getCurrentWeather } from "../functions/getWeather";
 import { monthsDaysArray } from "../functions/months&daysArray";
 import { daysArray } from "../functions/months&daysArray";
-import { getIcon } from "../functions/getIcon";
 import { getBackgroundData } from "../functions/getBackgroundData";
 import { ExtendedForecast } from "./ExtendedForecast";
 import humidity from "../images/humidity.png";
@@ -14,7 +13,7 @@ import { checkIsSaved } from "../functions/checkIsSaved";
 import mountains from "../images/mountains.jpg";
 import world from "../images/world.png"
 import { getDailyWeather } from "../functions/getWeather";
-//this component rendering the main content on page(weather forecast)
+
 /**
  * this component is responsible for rendering main content with weather forecast
  * @param place (REDUX) - name of particular place, needed to fetch data about weather forecast
@@ -41,10 +40,11 @@ const MainForecast = ({ place, saveNewPlace, savedPlaces }) => {
         getCurrentWeather(setCurrentForecast, place.location);
     }, [place.location]);
 
-        // setting the weather state (by getDailyWeather function)
-        useEffect(() => {
-            (currentForecast !== null && currentForecast !== undefined) &&  getDailyWeather(setExtendedForecastData, currentForecast.coord.lat, currentForecast.coord.lon);
-        }, [currentForecast]);
+    // setting the weather state (by getDailyWeather function)
+    useEffect(() => {
+        (currentForecast !== null && currentForecast !== undefined) && getDailyWeather(setExtendedForecastData, currentForecast.coord.lat, currentForecast.coord.lon);
+    }, [currentForecast]);
+
     // check if user has already save searched place
     useEffect(() => {
         setIsSaved(checkIsSaved(place.location));
@@ -53,7 +53,6 @@ const MainForecast = ({ place, saveNewPlace, savedPlaces }) => {
     // set background data
     useEffect(() => {
         currentForecast && setBackgroundData(getBackgroundData(currentForecast.weather[0].main));
-        console.log(currentForecast.weather[0].icon)
     }, [currentForecast]);
 
     // blocking display while forecast data is fetching
@@ -98,9 +97,9 @@ const MainForecast = ({ place, saveNewPlace, savedPlaces }) => {
                 <div className="forecast_container">
 
                     {/* set background in container with forecast in order to create glass effect */}
-                    <div className="mainForecast"  >
+                    <div className="mainForecast">
 
-                        <div className='forecastGlass' style={{ backgroundImage: `url(${backgroundData.src})` }} />
+                        <div className=''  />
                         <div className="save">
 
                             {/* button  (hearth icon) by which user can save searched place into local storage (by saveNewPlace() function, in which is logic responsible for saving this place is placed )*/}
@@ -126,7 +125,7 @@ const MainForecast = ({ place, saveNewPlace, savedPlaces }) => {
 
                             {/* temperature and weather icon */}
                             <div className="currentWeather__temperature">
-                                <div><img src={`http://openweathermap.org/img/wn/${currentForecast.weather[0].icon}@2x.png`} title={currentForecast.weather[0].main}/></div>
+                                <div><img src={`http://openweathermap.org/img/wn/${currentForecast.weather[0].icon}@2x.png`} title={currentForecast.weather[0].main} /></div>
                                 <div>{Math.round(currentForecast.main.temp)}&#176;
                                 </div>
                                 <div>{currentForecast.weather[0].description}</div>

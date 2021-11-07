@@ -22,6 +22,11 @@ body, html {
   /* z-index usage is up to you.. although there is no need of using it because the default stack context will work. */
   z-index: -1; // this is optional
   top: 0;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  filter: blur(20px);
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.4);
 }
 .humidityColor{
  color: #fb8086;
