@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { getDailyWeather } from "../functions/getWeather";
 import { getDay } from "../functions/getDay";
 import { getIcon } from "../functions/getIcon";
 import humiditySrc from "../images/humidity.png";
@@ -24,7 +22,7 @@ export const ExtendedForecast = ({extendedForecast}) => {
 
 /**
  * Component which is responsible for weather forecast for single day
- * @param {object} daily - data about weather forecast
+ * @param {object} daily - data about weather forecast 
  */
 const DailyWeather = ({ daily }) => {
 
@@ -53,7 +51,7 @@ const DailyWeather = ({ daily }) => {
 
                 {/*general information like temperature (form state) and weather icon(getIcon function)*/}
                 <div className="extendedDaily__general">
-                    {getIcon(sky)}
+                    <img src={`http://openweathermap.org/img/wn/${daily.weather[0].icon}@2x.png`} title={daily.weather[0].main}/>
                     <div>{Math.floor(temperature_max)}&#176;/{Math.floor(temperature_min)}&#176;</div>
                 </div>
 

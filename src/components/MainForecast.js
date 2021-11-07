@@ -53,6 +53,7 @@ const MainForecast = ({ place, saveNewPlace, savedPlaces }) => {
     // set background data
     useEffect(() => {
         currentForecast && setBackgroundData(getBackgroundData(currentForecast.weather[0].main));
+        console.log(currentForecast.weather[0].icon)
     }, [currentForecast]);
 
     // blocking display while forecast data is fetching
@@ -125,7 +126,7 @@ const MainForecast = ({ place, saveNewPlace, savedPlaces }) => {
 
                             {/* temperature and weather icon */}
                             <div className="currentWeather__temperature">
-                                <div>{getIcon(currentForecast.weather[0].main)}</div>
+                                <div><img src={`http://openweathermap.org/img/wn/${currentForecast.weather[0].icon}@2x.png`} title={currentForecast.weather[0].main}/></div>
                                 <div>{Math.round(currentForecast.main.temp)}&#176;
                                 </div>
                                 <div>{currentForecast.weather[0].description}</div>
