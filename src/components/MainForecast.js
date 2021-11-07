@@ -13,7 +13,7 @@ import { changeSavedPlaces } from "../actions/savedPlaces-action";
 import { checkIsSaved } from "../functions/checkIsSaved";
 import mountains from "../images/mountains.jpg";
 import world from "../images/world.png"
-
+import { getDailyWeather } from "../functions/getWeather";
 //this component rendering the main content on page(weather forecast)
 /**
  * this component is responsible for rendering main content with weather forecast
@@ -33,12 +33,18 @@ const MainForecast = ({ place, saveNewPlace, savedPlaces }) => {
     /** data about background - graphic source and author attribute from freepik */
     const [backgroundData, setBackgroundData] = useState({ src: '', author: '' });
 
+    /** this state contains extended weather forecast - for 7 days */
+    const [extendedForecastData, setExtendedForecastData] = useState(null);
 
     // fetch data about weather by using getCurrentWeather function
     useEffect(() => {
         getCurrentWeather(setCurrentForecast, place.location);
     }, [place.location]);
 
+        // setting the weather state (by getDailyWeather function)
+        useEffect(() => {
+            (currentForecast !== null && currentForecast !== undefined) &&  getDailyWeather(setExtendedForecastData, currentForecast.coord.lat, currentForecast.coord.lon);
+        }, [currentForecast]);
     // check if user has already save searched place
     useEffect(() => {
         setIsSaved(checkIsSaved(place.location));
@@ -50,7 +56,7 @@ const MainForecast = ({ place, saveNewPlace, savedPlaces }) => {
     }, [currentForecast]);
 
     // blocking display while forecast data is fetching
-    if (currentForecast === null) {
+    if (currentForecast === null || extendedForecastData === null) {
         return null
     }
 
@@ -58,9 +64,7 @@ const MainForecast = ({ place, saveNewPlace, savedPlaces }) => {
     else if (currentForecast === undefined) {
         return (
             <>
-
-                {/* set background  */}
-                <style>{`body{ background-image: url(${mountains})}`}</style>
+                <div className="bg" style={{ backgroundImage: `url(${mountains})` }} />
 
                 {/* notify the user */}
                 <main className="container">
@@ -84,114 +88,113 @@ const MainForecast = ({ place, saveNewPlace, savedPlaces }) => {
 
     // content with weather forecast
     return (
-        <main className="container">
+        <>
 
-            {/* set a background that relates to the current weather*/}
-            <style>{`body {
-            background-image: url(${backgroundData.src})} 
-            `}</style>
+            <div className="bg" style={{ backgroundImage: `url(${backgroundData.src})` }} />
 
+            <main className="container">
 
-            <div className="forecast_container">
+                <div className="forecast_container">
 
-                {/* set background in container with forecast in order to create glass effect */}
-                <div className="mainForecast"  >
+                    {/* set background in container with forecast in order to create glass effect */}
+                    <div className="mainForecast"  >
 
-                    <div className='forecastGlass' style={{ backgroundImage: `url(${backgroundData.src})` }} />
-                    <div className="save">
+                        <div className='forecastGlass' style={{ backgroundImage: `url(${backgroundData.src})` }} />
+                        <div className="save">
 
-                        {/* button  (hearth icon) by which user can save searched place into local storage (by saveNewPlace() function, in which is logic responsible for saving this place is placed )*/}
-                        {/* when user save new place, he will be displayed in navigation */}
-                        <div
-                            className={`save__btn ${isSaved ? 'save__btn-saved' : 'save__btn-notSaved'}`}
-                            onClick={() => saveNewPlace(currentForecast.name)}
-                            title={`save__btn ${isSaved ? 'Save this location' : 'Remove this location from saved'}`}
-                        >
-                            <i className="fas fa-heart" />
-                        </div>
-                    </div>
-
-
-                    {/* place name */}
-                    <h1 className="mainForecast__title">{currentForecast.name}</h1>
-
-                    {/* current data */}
-                    <h2 className="mainForecast__date">{daysArray[new Date().getDay()]}, {monthsDaysArray[new Date().getMonth()]} {new Date().getDate()}, {new Date().getFullYear()}</h2>
-
-                    {/*current weather */}
-                    <div className="currentWeather">
-
-                        {/* temperature and weather icon */}
-                        <div className="currentWeather__temperature">
-                            <div>{getIcon(currentForecast.weather[0].main)}</div>
-                            <div>{Math.round(currentForecast.main.temp)}&#176;
+                            {/* button  (hearth icon) by which user can save searched place into local storage (by saveNewPlace() function, in which is logic responsible for saving this place is placed )*/}
+                            {/* when user save new place, he will be displayed in navigation */}
+                            <div
+                                className={`save__btn ${isSaved ? 'save__btn-saved' : 'save__btn-notSaved'}`}
+                                onClick={() => saveNewPlace(currentForecast.name)}
+                                title={`save__btn ${isSaved ? 'Save this location' : 'Remove this location from saved'}`}
+                            >
+                                <i className="fas fa-heart" />
                             </div>
-                            <div>{currentForecast.weather[0].description}</div>
                         </div>
 
-                        {/* min & max temperature and conditions */}
-                        <div className="currentWeather__details">
 
-                            <div className="currentWeather__generalWrapper">
+                        {/* place name */}
+                        <h1 className="mainForecast__title">{currentForecast.name}</h1>
+
+                        {/* current data */}
+                        <h2 className="mainForecast__date">{daysArray[new Date().getDay()]}, {monthsDaysArray[new Date().getMonth()]} {new Date().getDate()}, {new Date().getFullYear()}</h2>
+
+                        {/*current weather */}
+                        <div className="currentWeather">
+
+                            {/* temperature and weather icon */}
+                            <div className="currentWeather__temperature">
+                                <div>{getIcon(currentForecast.weather[0].main)}</div>
+                                <div>{Math.round(currentForecast.main.temp)}&#176;
+                                </div>
+                                <div>{currentForecast.weather[0].description}</div>
+                            </div>
+
+                            {/* min & max temperature and conditions */}
+                            <div className="currentWeather__details">
+
+                                <div className="currentWeather__generalWrapper">
 
 
-                                <h3 className="currentWeather__temperatureFeel">Feels
-                                    like {Math.round(currentForecast.main.feels_like)}&#176; </h3>
+                                    <h3 className="currentWeather__temperatureFeel">Feels
+                                        like {Math.round(currentForecast.main.feels_like)}&#176; </h3>
 
-                                {/*min & max temperature*/}
-                                <div className="currentWeather__detailsMinMax">
+                                    {/*min & max temperature*/}
+                                    <div className="currentWeather__detailsMinMax">
 
-                                    {/* max */}
-                                    <div title='Highest temperature'>
-                                        <i className="fas fa-long-arrow-alt-up" />
-                                        <span>{Math.round(currentForecast.main.temp_max)}&#176;</span>
+                                        {/* max */}
+                                        <div title='Highest temperature'>
+                                            <i className="fas fa-long-arrow-alt-up" />
+                                            <span>{Math.round(currentForecast.main.temp_max)}&#176;</span>
+                                        </div>
+
+                                        {/* min */}
+                                        <div title='Lowest temperature'>
+                                            <i className="fas fa-long-arrow-alt-down" />
+                                            <span>{Math.round(currentForecast.main.temp_min)}&#176;</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                {/*weather conditions*/}
+                                <div className="currentWeather__detailsConditions">
+
+                                    {/* Humidity */}
+                                    <div className='currentWeather__singleDetail'>
+                                        <img src={humidity} alt='Water' title='Humidity' /> <span>Humidity</span>
+                                        <strong className='humidityColor'> {currentForecast.main.humidity}%</strong>
                                     </div>
 
-                                    {/* min */}
-                                    <div title='Lowest temperature'>
-                                        <i className="fas fa-long-arrow-alt-down" />
-                                        <span>{Math.round(currentForecast.main.temp_min)}&#176;</span>
+                                    {/* Wind */}
+                                    <div className='currentWeather__singleDetail'>
+                                        <img src={air} alt='Wind' title='Wind' /> <span>Wind</span>
+                                        <strong className='windColor'> {Math.floor(currentForecast.wind.speed)}kph</strong>
                                     </div>
 
-                                </div>
-                            </div>
+                                    {/* Pressure */}
+                                    <div className='currentWeather__singleDetail'>
+                                        <img src={pressure} alt='Pressure' title='Pressure' /><span>Pressure</span>
+                                        <strong className='pressureColor'> {currentForecast.main.pressure} hpa</strong>
+                                    </div>
 
-                            {/*weather conditions*/}
-                            <div className="currentWeather__detailsConditions">
-
-                                {/* Humidity */}
-                                <div className='currentWeather__singleDetail'>
-                                    <img src={humidity} alt='Water' title='Humidity' /> <span>Humidity</span>
-                                    <strong className='humidityColor'> {currentForecast.main.humidity}%</strong>
-                                </div>
-
-                                {/* Wind */}
-                                <div className='currentWeather__singleDetail'>
-                                    <img src={air} alt='Wind' title='Wind' /> <span>Wind</span>
-                                    <strong className='windColor'> {Math.floor(currentForecast.wind.speed)}kph</strong>
-                                </div>
-
-                                {/* Pressure */}
-                                <div className='currentWeather__singleDetail'>
-                                    <img src={pressure} alt='Pressure' title='Pressure' /><span>Pressure</span>
-                                    <strong className='pressureColor'> {currentForecast.main.pressure} hpa</strong>
                                 </div>
 
                             </div>
 
                         </div>
 
+                        {/*rendering component which is returning daily weather, transmits coords from state (currentForecast)*/}
+                        <ExtendedForecast extendedForecast={extendedForecastData} />
                     </div>
-
-                    {/*rendering component which is returning daily weather, transmits coords from state (currentForecast)*/}
-                    <ExtendedForecast lat={currentForecast.coord.lat} lon={currentForecast.coord.lon} />
                 </div>
-            </div>
 
-            {/* freepik author attribute */}
-            <div className="freepik__atribbute">{backgroundData.author}</div>
+                {/* freepik author attribute */}
+                <div className="freepik__atribbute">{backgroundData.author}</div>
 
-        </main>
+            </main>
+        </>
     )
 }
 

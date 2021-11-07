@@ -13,6 +13,16 @@ body, html {
 *{
   box-sizing: border-box;
 }
+.bg{
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  /* z-index usage is up to you.. although there is no need of using it because the default stack context will work. */
+  z-index: -1; // this is optional
+  top: 0;
+}
 .humidityColor{
  color: #fb8086;
 }
@@ -27,6 +37,7 @@ color: #ffc14f;
   width: 315px;
   margin: 0 auto;
   margin-bottom: 11px;
+  padding-bottom: 10px;
   @include mobileM {
     width: 370px;
   }

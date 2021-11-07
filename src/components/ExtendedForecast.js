@@ -8,23 +8,9 @@ import pressureSrc from "../images/pressure.png"
 
 /**
  * Component which is displaying weather forecast for the next 7 days
- * @param {number} lat - x cordinates
- * @param {number} lon- y cordinates 
+ * @param {number} extendedForecast - data about weather forecast for the next 7 days
  */
-export const ExtendedForecast = ({ lat, lon }) => {
-
-    /** this state contains weather */
-    const [extendedForecast, setExtendedForecast] = useState(null);
-
-    //setting the weather state (by getDailyWeather function)
-    useEffect(() => {
-        getDailyWeather(setExtendedForecast, lat, lon);
-    }, [lat, lon,]);
-
-    // blocking display if the weather has not been downloaded yet
-    if (extendedForecast === null) {
-        return `loading...`;
-    }
+export const ExtendedForecast = ({extendedForecast}) => {
 
     // rendering daily weather by using DailyWeather component
     return <div className="extendedForecast">
