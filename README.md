@@ -1,5 +1,5 @@
 # Dollar Weather App 
-This is my first project - weather application written with react, with the ability to save your favorite places to local storage.
+This is my first project - weather application written with react, with the ability to save your favorite places to local storage. Available on https://vigilant-hamilton-a32b77.netlify.app/
 ## Technology
 * JavaScript
 * Sass
